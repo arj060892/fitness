@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Akhil Weight Loss – Mobile Tracker</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+      :root {
+        --brand: #0d6efd;
+      }
+      html,
+      body {
+        height: 100%;
+        background: #0b1220;
+      }
+      body {
+        color: #e9eef6;
+      }
+      .app-container {
+        max-width: 720px;
+        margin: 0 auto;
+      }
+      .card {
+        background: #111a2e;
+        border: 1px solid #23304e;
+      }
+      .card-header,
+      .offcanvas,
+      .modal-content {
+        background: #0f1830;
+        border-color: #23304e;
+        color: #e9eef6;
+      }
+      .form-control,
+      .form-select,
+      .form-check-input {
+        background: #0f1830;
+        color: #e9eef6;
+        border-color: #263554;
+      }
+      .form-control:focus,
+      .form-select:focus {
+        border-color: #71a5ff;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+      }
+      .btn {
+        border-radius: 14px;
+      }
+      .btn-icon {
+        width: 56px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .user-tile {
+        background: linear-gradient(145deg, #0f1a33, #0c1630);
+        border: 1px solid #1f2b46;
+        border-radius: 18px;
+        padding: 18px;
+      }
+      .user-tile .avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #122044;
+        color: #79aaff;
+        font-size: 28px;
+      }
+      .sticky-bottom-nav {
+        position: sticky;
+        bottom: 0;
+        z-index: 1020;
+        backdrop-filter: blur(6px);
+        background: rgba(11, 18, 32, 0.75);
+        border-top: 1px solid #263554;
+      }
+      .nav-link {
+        color: #cfe0ff;
+      }
+      .nav-link.active {
+        color: #fff;
+      }
+      .progress {
+        height: 10px;
+        background: #19233d;
+      }
+      .progress-bar {
+        background: linear-gradient(90deg, #41b7ff, #1ae5b2);
+      }
+      .badge-soft {
+        background: #162447;
+        border: 1px solid #284274;
+        color: #b8d7ff;
+      }
+      .list-group-item {
+        background: #0f1830;
+        color: #dfe9fb;
+        border-color: #203154;
+      }
+      .tap-target {
+        padding: 14px 16px;
+        border-radius: 16px;
+        border: 1px solid #213153;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .tap-target i {
+        font-size: 1.4rem;
+        color: #79aaff;
+      }
+      .tiny {
+        font-size: 0.8rem;
+        opacity: 0.9;
+      }
+      .muted {
+        color: #9fb4d9;
+      }
+      .divider {
+        height: 1px;
+        border-top: 1px dashed #2a3a60;
+        margin: 0.75rem 0;
+      }
+      @media (max-width: 576px) {
+        .grid-2 {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-container p-3 pb-5">
+      <!-- Landing: user select -->
+      <div id="screen-users" class="d-block">
+        <div class="text-center mb-3">
+          <h1 class="h4 fw-bold">Welcome</h1>
+          <p class="muted mb-0">Choose a user to continue</p>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-12">
+            <div
+              class="user-tile d-flex align-items-center justify-content-between"
+            >
+              <div class="d-flex align-items-center gap-3">
+                <div class="avatar"><i class="bi bi-person-circle"></i></div>
+                <div>
+                  <div class="fw-semibold">Akhil</div>
+                  <div class="tiny muted">Weight loss • 8-week plan</div>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-sm" id="btn-enter-akhil">
+                <i class="bi bi-box-arrow-in-right me-1"></i> Open
+              </button>
+            </div>
+          </div>
+          <div class="col-12">
+            <div
+              class="user-tile d-flex align-items-center justify-content-between"
+            >
+              <div class="d-flex align-items-center gap-3">
+                <div class="avatar"><i class="bi bi-person"></i></div>
+                <div>
+                  <div class="fw-semibold">User 2</div>
+                  <div class="tiny muted">(placeholder)</div>
+                </div>
+              </div>
+              <button class="btn btn-outline-secondary btn-sm" disabled>
+                <i class="bi bi-lock me-1"></i> Locked
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 small muted">
+          <i class="bi bi-phone me-1"></i> Mobile-first UI • All data saved
+          locally in your browser (no login)
+        </div>
+      </div>
+
+      <!-- Dashboard for Akhil -->
+      <div id="screen-akhil" class="d-none">
+        <header class="d-flex align-items-center justify-content-between mb-3">
+          <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-outline-light btn-sm" id="btn-back-users">
+              <i class="bi bi-arrow-left"></i>
+            </button>
+            <h2 class="h5 fw-bold mb-0">Akhil</h2>
+            <span class="badge rounded-pill badge-soft ms-2">8-week plan</span>
+          </div>
+          <button class="btn btn-outline-info btn-sm" id="btn-open-settings">
+            <i class="bi bi-gear"></i>
+          </button>
+        </header>
+
+        <!-- Summary cards -->
+        <div class="row g-2 mb-3">
+          <div class="col-6">
+            <div class="card p-3">
+              <div class="tiny muted">Current Weight</div>
+              <div class="fs-4 fw-semibold" id="summary-weight">—</div>
+              <div class="tiny">
+                <i class="bi bi-graph-down me-1"></i
+                ><span id="summary-weight-diff">—</span> since start
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card p-3">
+              <div class="tiny muted">Completion</div>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  id="summary-complete-bar"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <div class="tiny mt-1">
+                <i class="bi bi-check2-circle me-1"></i
+                ><span id="summary-complete-text">0%</span> of days done
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabbed content -->
+        <ul class="nav nav-tabs" id="akhil-tabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              data-bs-toggle="tab"
+              data-bs-target="#tab-tracking"
+              type="button"
+              role="tab"
+            >
+              <i class="bi bi-clipboard2-check me-1"></i> Tracking
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              data-bs-toggle="tab"
+              data-bs-target="#tab-workouts"
+              type="button"
+              role="tab"
+            >
+              <i class="bi bi-dumbbell me-1"></i> Workouts
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content pt-3">
+          <!-- TRACKING TAB -->
+          <div
+            class="tab-pane fade show active"
+            id="tab-tracking"
+            role="tabpanel"
+          >
+            <div class="card p-3 mb-3">
+              <div
+                class="d-flex align-items-center justify-content-between mb-2"
+              >
+                <h3 class="h6 mb-0">
+                  <i class="bi bi-pen me-1"></i> Add Tracking Entry
+                </h3>
+                <button
+                  class="btn btn-outline-secondary btn-sm"
+                  id="btn-fill-demo"
+                >
+                  <i class="bi bi-magic"></i> Demo
+                </button>
+              </div>
+              <div class="row g-2">
+                <div class="col-6">
+                  <label class="form-label tiny">Date</label>
+                  <input type="date" class="form-control" id="trk-date" />
+                </div>
+                <div class="col-6">
+                  <label class="form-label tiny">Weight (kg)</label>
+                  <input
+                    type="number"
+                    min="0"
+                    step="0.1"
+                    class="form-control"
+                    id="trk-weight"
+                    placeholder="118"
+                  />
+                </div>
+                <div class="col-6">
+                  <label class="form-label tiny">Body Fat %</label>
+                  <input
+                    type="number"
+                    min="0"
+                    max="80"
+                    step="0.1"
+                    class="form-control"
+                    id="trk-bf"
+                    placeholder="33"
+                  />
+                </div>
+                <div class="col-6">
+                  <label class="form-label tiny">Waist (cm)</label>
+                  <input
+                    type="number"
+                    min="0"
+                    step="0.5"
+                    class="form-control"
+                    id="trk-waist"
+                    placeholder="—"
+                  />
+                </div>
+                <div class="col-12">
+                  <label class="form-label tiny">Notes</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="trk-notes"
+                    placeholder="e.g., knee pain low today"
+                  />
+                </div>
+                <div class="col-12 d-flex gap-2 mt-2">
+                  <button class="btn btn-primary flex-fill" id="btn-add-entry">
+                    <i class="bi bi-plus-circle me-1"></i> Save Entry
+                  </button>
+                  <button
+                    class="btn btn-outline-warning"
+                    id="btn-export-json"
+                    title="Export JSON"
+                  >
+                    <i class="bi bi-download"></i>
+                  </button>
+                  <label class="btn btn-outline-light mb-0" title="Import JSON">
+                    <i class="bi bi-upload"></i>
+                    <input
+                      type="file"
+                      id="input-import"
+                      class="d-none"
+                      accept="application/json"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="card p-3 mb-3">
+              <h3 class="h6 mb-2">
+                <i class="bi bi-graph-up me-1"></i> Progress Charts
+              </h3>
+              <div class="mb-3">
+                <canvas id="chart-weight" height="180"></canvas>
+              </div>
+              <div>
+                <canvas id="chart-bf-waist" height="180"></canvas>
+              </div>
+            </div>
+
+            <div class="card p-3">
+              <div class="d-flex align-items-center justify-content-between">
+                <h3 class="h6 mb-0">
+                  <i class="bi bi-journal-text me-1"></i> History
+                </h3>
+                <button
+                  class="btn btn-outline-danger btn-sm"
+                  id="btn-clear-tracking"
+                >
+                  <i class="bi bi-trash"></i> Clear
+                </button>
+              </div>
+              <div class="divider"></div>
+              <ul class="list-group" id="trk-history"></ul>
+            </div>
+          </div>
+
+          <!-- WORKOUTS TAB -->
+          <div class="tab-pane fade" id="tab-workouts" role="tabpanel">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+              <h3 class="h6 mb-0">
+                <i class="bi bi-calendar3 me-1"></i> 8-Week Plan
+              </h3>
+              <div class="tiny muted">
+                Start: <span id="plan-start-label"></span>
+              </div>
+            </div>
+            <div class="card p-3 mb-3">
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="w-100 me-2">
+                  <div class="progress">
+                    <div
+                      class="progress-bar"
+                      id="workout-overall-bar"
+                      style="width: 0%"
+                    ></div>
+                  </div>
+                  <div class="tiny mt-1">
+                    <i class="bi bi-check2-circle me-1"></i
+                    ><span id="workout-overall-text">0/40</span> workouts done
+                  </div>
+                </div>
+                <button
+                  class="btn btn-outline-light btn-sm"
+                  id="btn-reset-workouts"
+                >
+                  <i class="bi bi-arrow-counterclockwise"></i>
+                </button>
+              </div>
+            </div>
+
+            <div id="weeks-container" class="accordion"></div>
+          </div>
+        </div>
+
+        <!-- Dev diagnostics -->
+        <div class="accordion mt-3" id="dev-acc">
+          <div class="accordion-item card">
+            <h2 class="accordion-header" id="dev-h">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#dev-c"
+              >
+                <i class="bi bi-bug me-2"></i> Developer Diagnostics & Tests
+              </button>
+            </h2>
+            <div
+              id="dev-c"
+              class="accordion-collapse collapse"
+              data-bs-parent="#dev-acc"
+            >
+              <div class="accordion-body">
+                <button class="btn btn-sm btn-outline-info" id="btn-run-tests">
+                  <i class="bi bi-play-circle me-1"></i>Run Self-Tests
+                </button>
+                <div class="tiny muted mt-2">
+                  Open your browser console to see detailed assertions.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sticky bottom nav for mobile -->
+        <div class="sticky-bottom-nav py-2 mt-3">
+          <div class="container-fluid px-0">
+            <div class="d-flex justify-content-around">
+              <button
+                class="btn btn-link nav-link active"
+                data-bs-toggle="tab"
+                data-bs-target="#tab-tracking"
+              >
+                <i class="bi bi-clipboard2-check fs-5"></i>
+                <div class="tiny">Tracking</div>
+              </button>
+              <button
+                class="btn btn-link nav-link"
+                data-bs-toggle="tab"
+                data-bs-target="#tab-workouts"
+              >
+                <i class="bi bi-dumbbell fs-5"></i>
+                <div class="tiny">Workouts</div>
+              </button>
+              <button class="btn btn-link" id="btn-open-settings-bottom">
+                <i class="bi bi-gear fs-5"></i>
+                <div class="tiny">Settings</div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SETTINGS Offcanvas -->
+    <div
+      class="offcanvas offcanvas-end text-bg-dark"
+      tabindex="-1"
+      id="offcanvasSettings"
+      aria-labelledby="offcanvasSettingsLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasSettingsLabel">
+          <i class="bi bi-gear me-1"></i> Settings
+        </h5>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body small">
+        <div class="mb-3">
+          <label class="form-label">Plan start date</label>
+          <input type="date" id="setting-start-date" class="form-control" />
+          <div class="tiny muted mt-1">
+            Used to generate the 8-week schedule (Mon–Fri workouts).
+          </div>
+        </div>
+        <div class="mb-3 grid-2">
+          <button class="btn btn-outline-warning" id="btn-rebuild-plan">
+            <i class="bi bi-tools me-1"></i> Rebuild Plan
+          </button>
+          <button class="btn btn-outline-danger" id="btn-clear-all">
+            <i class="bi bi-exclamation-triangle me-1"></i> Clear All
+          </button>
+        </div>
+        <div class="alert alert-info">
+          <i class="bi bi-shield-check me-1"></i> All data is stored only in
+          your browser's <code>localStorage</code>.
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Wrapped in a single IIFE to avoid leaking globals.
+      (function(){
+        'use strict';
+
+        // ------------------ Storage Keys ------------------
+        const U_AKHIL = 'akhil';
+        const NS = (k) => `wl_${U_AKHIL}_${k}`;
+        const K_TRACK = NS('tracking'); // array of entries
+        const K_PLAN  = NS('plan');     // array of days with exercises
+        const K_DONE  = NS('done');     // map dayId => true
+        const K_START = NS('start');    // ISO date
+        const K_THEME = NS('theme');    // 'dark' | 'light'
+
+        // ------------------ Utilities ------------------
+        const todayISO = () => new Date().toISOString().slice(0,10);
+        const fmt = (d) => new Date(d).toLocaleDateString(undefined, {year:'numeric', month:'short', day:'numeric'});
+        const load = (k, def) => { try { const v = localStorage.getItem(k); return v? JSON.parse(v): def; } catch { return def; } };
+        const save = (k, v) => localStorage.setItem(k, JSON.stringify(v));
+        const uid = (w, i) => `W${w+1}D${i+1}`; // unique day id within plan
+
+        // ------------------ Workout Plan Generator ------------------
+        function baseDayTemplate(type, weekIndex){
+          const month2 = weekIndex >= 4; // weeks 5-8
+          const reps12 = month2 ? '3×10–12' : '3×12–15';
+          const reps15 = month2 ? '3×12–15' : '3×15';
+          const light2 = month2 ? '2×12–15' : '2×15';
+          const core3  = month2 ? '4×20–30s' : '3×20s';
+
+          const D = {
+            'UpperA': [
+              { n:'Converging Chest Press', s:reps12, q:'Controlled, no lock-out' },
+              { n:'Diverging Seated Row', s:'3×12', q:'Squeeze shoulder blades' },
+              { n:'Lat Pulldown', s:'3×10–12', q:'Smooth; avoid jerks' },
+              { n:'Pec Fly', s:reps15, q:'Light stretch' },
+              { n:'Seated Dip', s:reps12, q:'Elbows track' },
+              { n:'Plank (knees)', s:core3, q:'Brace core for back' },
+              { n:'Cable Woodchop', s:light2, q:'Each side' }
+            ],
+            'LowerA': [
+              { n:'Leg Press', s:'4×12 (light)', q:'Feet high & wide' },
+              { n:'Prone Leg Curl', s:'3×15', q:'Hamstrings for knee' },
+              { n:'Leg Extension', s:'2×12 (slow)', q:'Light to protect knee' },
+              { n:'Hip Abduction', s:'3×15', q:'Glute medius' },
+              { n:'Hip Adduction', s:'2×15', q:'Inner thigh support' },
+              { n:'Glute Bridge', s:'3×15', q:'Posterior chain' },
+              { n:'Side Plank (knees)', s:core3, q:'Each side' }
+            ],
+            'FullBody': [
+              { n:'Cable Crossover (standing)', s:'3×15', q:'Light tension' },
+              { n:'Lat Pulldown', s:'3×12', q:'' },
+              { n:'Seated Row', s:'2×15', q:'' },
+              { n:'Step-up (low platform)', s:'3×10/side', q:'Bodyweight or light DB' },
+              { n:'DB Deadlift (very light)', s:'2×12', q:'Hinge, neutral back' }
+            ],
+            'UpperB': [
+              { n:'Overhead Press (machine)', s:'3×12', q:'Core tight' },
+              { n:'Lateral Raise (machine)', s:reps15, q:'Soft elbows' },
+              { n:'Biceps Curl (machine)', s:'3×12', q:'' },
+              { n:'Triceps Press (machine)', s:'3×12', q:'' },
+              { n:'Face Pull (cables)', s:'3×15', q:'Rear delts' },
+              { n:'Abdominal Crunch (machine)', s:'3×15', q:'' }
+            ],
+            'LowerB': [
+              { n:'Leg Press (single-leg)', s:'3×12/leg', q:'Control range' },
+              { n:'Calf Press', s:'3×15', q:'Full stretch' },
+              { n:'Step-ups', s:'2×10', q:'Balance focus' },
+              { n:'Hip Abd + Add', s:'2×15 each', q:'Superset' }
+            ]
+          };
+
+          if (month2 && type==='UpperA') {
+            D[type].splice(1,0,{ n:'Incline Bench Press (machine)', s:'3×10–12', q:'Moderate load' });
+          }
+          if (month2 && type==='FullBody') {
+            D[type].push({ n:'Functional Trainer: Squat to Cable Row', s:'3×12', q:'Light squat depth' });
+          }
+          return D[type];
+        }
+
+        function cardioForDay(dayIndex, weekIndex){
+          const month2 = weekIndex>=4;
+          const base = [
+            { eq:'Treadmill', tip: month2? 'Incline walk 3–4% • 25–30 min':'Incline walk 3% • 20–25 min' },
+            { eq:'Upright Bike', tip: month2? 'Steady 25–30 min':'Steady 20–22 min' },
+            { eq:'Elliptical', tip: month2? '15 min steady + 10 min cool/mod':'15 + 5 min cool' },
+            { eq:'Treadmill', tip: month2? 'Intervals 1:1 × 12–15 min':'Intervals 1:2 × 12 min' },
+            { eq:'Stepmill', tip: month2? 'Low speed 18–20 min':'Low speed 15 min' }
+          ];
+          return base[dayIndex];
+        }
+
+        function buildPlan(startDate){
+          const start = new Date(startDate);
+          // Align start to Monday for consistency
+          const day = start.getDay();
+          const diffToMon = (day+6)%7; // 0 for Mon
+          start.setDate(start.getDate() - diffToMon);
+
+          const weeks = [];
+          const TYPES = ['UpperA','LowerA','FullBody','UpperB','LowerB'];
+
+          for(let w=0; w<8; w++){
+            const days = [];
+            for(let i=0; i<7; i++){
+              const d = new Date(start);
+              d.setDate(d.getDate() + w*7 + i);
+              const isWorkout = i<5; // Mon-Fri
+              const type = isWorkout? TYPES[i] : 'Rest';
+              const entry = {
+                id: uid(w,i),
+                date: d.toISOString().slice(0,10),
+                label: fmt(d),
+                isWorkout,
+                type,
+                exercises: isWorkout ? baseDayTemplate(type, w) : [],
+                cardio: isWorkout ? cardioForDay(i, w) : null
+              };
+              days.push(entry);
+            }
+            weeks.push({ week:w+1, days });
+          }
+          return weeks;
+        }
+
+        // ------------------ Tracking ------------------
+        function refreshTrackingSummary(entries){
+          if(entries.length===0){
+            $('#summary-weight').text('—');
+            $('#summary-weight-diff').text('—');
+            return;
+          }
+          const sorted = [...entries].sort((a,b)=>a.date.localeCompare(b.date));
+          const first = sorted[0];
+          const last  = sorted[sorted.length-1];
+          $('#summary-weight').text(`${last.weight} kg`);
+          const diff = (last.weight - first.weight).toFixed(1);
+          const txt  = (diff>0? '+':'' ) + diff + ' kg';
+          $('#summary-weight-diff').text(txt);
+        }
+
+        function renderHistory(entries){
+          const $list = $('#trk-history').empty();
+          const sorted = [...entries].sort((a,b)=>b.date.localeCompare(a.date));
+          if(sorted.length===0){
+            $list.append('<li class="list-group-item tiny">No entries yet. Add your first above.</li>');
+            return;
+          }
+          sorted.forEach((e,idx)=>{
+            const note  = e.notes? `<div class='tiny muted mt-1'><i class="bi bi-chat-left-text me-1"></i>${e.notes}</div>`:'';
+            const bf    = e.bodyFat? `${e.bodyFat}%`:'—';
+            const waist = e.waist? `${e.waist} cm`:'—';
+            $list.append(`
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div>
+                  <div class="fw-semibold">${fmt(e.date)} • ${e.weight} kg</div>
+                  <div class="tiny">Body fat: ${bf} • Waist: ${waist}</div>
+                  ${note}
+                </div>
+                <button class="btn btn-outline-danger btn-sm" data-del="${e.date}" title="Delete entry">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </li>`);
+          });
+
+          // delete handler
+          $list.find('button[data-del]').on('click', function(){
+            const date = $(this).data('del');
+            let entries = load(K_TRACK, []);
+            entries = entries.filter(x=>x.date!==date);
+            save(K_TRACK, entries);
+            refreshTrackingSummary(entries);
+            renderCharts(entries);
+            renderHistory(entries);
+          });
+        }
+
+        let chartWeight=null, chartBfWaist=null;
+        function renderCharts(entries){
+          const ctx1 = document.getElementById('chart-weight');
+          const ctx2 = document.getElementById('chart-bf-waist');
+          const sorted = [...entries].sort((a,b)=>a.date.localeCompare(b.date));
+          const labels = sorted.map(e=>e.date);
+          const weights= sorted.map(e=>e.weight);
+          const bfat   = sorted.map(e=>e.bodyFat||null);
+          const waist  = sorted.map(e=>e.waist||null);
+
+          if(chartWeight){ chartWeight.destroy(); }
+          if(chartBfWaist){ chartBfWaist.destroy(); }
+
+          chartWeight = new Chart(ctx1, {
+            type:'line',
+            data:{ labels, datasets:[{ label:'Weight (kg)', data:weights, tension:.3, fill:false }] },
+            options:{ plugins:{legend:{display:false}}, scales:{ x:{ ticks:{ color:'#bcd1ff' } }, y:{ ticks:{ color:'#bcd1ff' } } } }
+          });
+
+          chartBfWaist = new Chart(ctx2, {
+            type:'line',
+            data:{ labels, datasets:[
+              { label:'Body Fat %', data:bfat, tension:.3 },
+              { label:'Waist (cm)', data:waist, tension:.3 }
+            ]},
+            options:{ plugins:{legend:{labels:{color:'#cfe0ff'}}}, scales:{ x:{ ticks:{ color:'#bcd1ff' } }, y:{ ticks:{ color:'#bcd1ff' } } } }
+          });
+        }
+
+        // ------------------ Workouts Rendering ------------------
+        function renderWorkouts(plan, doneMap){
+          const $weeks = $('#weeks-container').empty();
+          let total=0, done=0;
+          plan.forEach((w,wi)=>{
+            const wid = `wk-${wi+1}`;
+            const weekDays = w.days.filter(d=>d.isWorkout);
+            const weekDone = weekDays.filter(d=>doneMap[d.id]).length;
+            total += weekDays.length; done += weekDone;
+            const pct = Math.round(weekDone / weekDays.length * 100);
+
+            const header = `
+              <h2 class="accordion-header" id="${wid}-hdr">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${wid}-col">
+                  <div class="w-100 d-flex align-items-center justify-content-between">
+                    <div>
+                      <span class="me-2">Week ${w.week}</span>
+                      <span class="tiny muted">${fmt(w.days[0].date)} – ${fmt(w.days[6].date)}</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                      <div class="progress" style="width:100px"><div class="progress-bar" style="width:${pct}%"></div></div>
+                      <span class="tiny">${weekDone}/${weekDays.length}</span>
+                    </div>
+                  </div>
+                </button>
+              </h2>`;
+
+            const bodyRows = w.days.map((d)=>{
+              if(!d.isWorkout){
+                return `<li class="list-group-item d-flex align-items-center justify-content-between">
+                    <div><i class="bi bi-cup-hot me-2"></i><strong>Rest</strong> • ${d.label}</div>
+                    <span class="badge rounded-pill bg-secondary">—</span>
+                  </li>`;
+              }
+              const exHtml = d.exercises.map(e=>`<li class="tiny">• <strong>${e.n}</strong> — ${e.s} <span class="muted">${e.q? '• '+e.q:''}</span></li>`).join('');
+              const checked = doneMap[d.id] ? 'checked' : '';
+              return `<li class="list-group-item">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <div class="fw-semibold"><i class="bi bi-calendar-check me-1"></i>${d.label} • <span class="badge badge-soft">${d.type}</span></div>
+                    <ul class="mb-1 mt-1">
+                      ${exHtml}
+                    </ul>
+                    <div class="tiny muted"><i class="bi bi-heart-pulse me-1"></i>Cardio: ${d.cardio.eq} — ${d.cardio.tip}</div>
+                  </div>
+                  <div class="form-check form-switch ms-2">
+                    <input class="form-check-input" type="checkbox" data-done-id="${d.id}" ${checked}>
+                    <label class="form-check-label tiny">Done</label>
+                  </div>
+                </div>
+              </li>`;
+            }).join('');
+
+            const body = `
+              <div id="${wid}-col" class="accordion-collapse collapse" data-bs-parent="#weeks-container">
+                <div class="accordion-body p-0">
+                  <ul class="list-group list-group-flush">${bodyRows}</ul>
+                </div>
+              </div>`;
+
+            $weeks.append(`<div class="accordion-item card mb-2">${header}${body}</div>`);
+          });
+
+          const pctOverall = Math.round(done/total*100) || 0;
+          $('#workout-overall-bar').css('width', pctOverall+'%');
+          $('#workout-overall-text').text(`${done}/${total}`);
+          $('#summary-complete-bar').css('width', pctOverall+'%');
+          $('#summary-complete-text').text(`${pctOverall}%`);
+
+          // Bind toggles
+          $weeks.find('input[data-done-id]').on('change', function(){
+            const id = $(this).data('done-id');
+            const map = load(K_DONE, {});
+            map[id] = $(this).is(':checked');
+            save(K_DONE, map);
+            renderWorkouts(load(K_PLAN,[]), map); // refresh summary & progress
+          });
+        }
+
+        // ------------------ Event Wiring & Boot ------------------
+        function show(screen){
+          $('#screen-users').toggleClass('d-none', screen!=='users');
+          $('#screen-akhil').toggleClass('d-none', screen!=='akhil');
+          if(screen==='akhil'){
+            // default to Tracking tab active
+            const tab = new bootstrap.Tab(document.querySelector('[data-bs-target="#tab-tracking"]'));
+            tab.show();
+          }
+        }
+
+        $(function(){
+          // Apply saved theme on load
+          try{ const th = JSON.parse(localStorage.getItem('wl_akhil_theme')) || 'dark'; applyTheme(th); }catch{ applyTheme('dark'); }
+          // init dates
+          $('#trk-date').val(todayISO());
+
+          // navigation
+          $('#btn-enter-akhil').on('click', function(){
+            show('akhil');
+            const plan = ensurePlan();
+            const done = load(K_DONE, {});
+            renderWorkouts(plan, done);
+            $('#plan-start-label').text(fmt(load(K_START,todayISO())));
+
+            const entries = load(K_TRACK, []);
+            refreshTrackingSummary(entries);
+            renderCharts(entries);
+            renderHistory(entries);
+          });
+          $('#btn-back-users').on('click', function(){ show('users'); });
+          $('#btn-open-settings, #btn-open-settings-bottom').on('click', function(){
+            const oc = new bootstrap.Offcanvas('#offcanvasSettings'); oc.show();
+            const th = load(K_THEME,'dark');
+            $('#switch-theme').prop('checked', th==='light');
+          });
+
+          // tracking add entry
+          $('#btn-add-entry').on('click', function(){
+            const e = {
+              date: $('#trk-date').val() || todayISO(),
+              weight: parseFloat($('#trk-weight').val()),
+              bodyFat: parseFloat($('#trk-bf').val()),
+              waist: parseFloat($('#trk-waist').val()),
+              notes: ($('#trk-notes').val()||'').trim()
+            };
+            if(!e.weight){ alert('Please enter weight.'); return; }
+            let entries = load(K_TRACK, []);
+            entries = entries.filter(x=>x.date!==e.date); // keep last for date
+            entries.push(e);
+            save(K_TRACK, entries);
+            refreshTrackingSummary(entries);
+            renderCharts(entries);
+            renderHistory(entries);
+            // quick clear
+            $('#trk-weight').val(''); $('#trk-bf').val(''); $('#trk-waist').val(''); $('#trk-notes').val('');
+          });
+
+          // export
+          $('#btn-export-json').on('click', function(){
+            const data = {
+              start: load(K_START,null),
+              tracking: load(K_TRACK,[]),
+              done: load(K_DONE,{}),
+              plan: load(K_PLAN,[])
+            };
+            const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = 'akhil-weightloss-data.json'; a.click();
+            URL.revokeObjectURL(url);
+          });
+
+          // import
+          $('#input-import').on('change', function(){
+            const file = this.files[0]; if(!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e){
+              try{
+                const data = JSON.parse(e.target.result);
+                if(data.start)    save(K_START,data.start);
+                if(data.tracking) save(K_TRACK,data.tracking);
+                if(data.done)     save(K_DONE,data.done);
+                if(data.plan)     save(K_PLAN,data.plan);
+                alert('Import complete. Reloading view.');
+                const plan = ensurePlan();
+                renderWorkouts(plan, load(K_DONE,{}));
+                const entries = load(K_TRACK,[]);
+                refreshTrackingSummary(entries); renderCharts(entries); renderHistory(entries);
+                $('#plan-start-label').text(fmt(load(K_START,todayISO())));
+              } catch(err){ alert('Invalid JSON.'); }
+            };
+            reader.readAsText(file);
+            this.value = '';
+          });
+
+          // clear tracking
+          $('#btn-clear-tracking').on('click', function(){
+            if(confirm('Clear all tracking entries?')){
+              save(K_TRACK, []);
+              renderHistory([]); renderCharts([]); refreshTrackingSummary([]);
+            }
+          });
+
+          // demo fill
+          $('#btn-fill-demo').on('click', function(){
+            const base = 118.0, days = 12;
+            const entries = [];
+            for(let i=0;i<days;i++){
+              const d = new Date(); d.setDate(d.getDate()- (days-i));
+              entries.push({
+                date: d.toISOString().slice(0,10),
+                weight: +(base - i*0.4 + (Math.random()*0.3-0.15)).toFixed(1),
+                bodyFat: +(33 - i*0.2 + (Math.random()*0.2-0.1)).toFixed(1),
+                waist: +(118 - i*0.6 + (Math.random()*0.4-0.2)).toFixed(1),
+                notes: i%3===0? 'Felt good' : ''
+              });
+            }
+            save(K_TRACK, entries);
+            refreshTrackingSummary(entries); renderCharts(entries); renderHistory(entries);
+          });
+
+              // Theme toggles
+          $('#btn-toggle-theme').on('click', function(){
+            const next = document.body.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
+            applyTheme(next); save(K_THEME,next);
+          });
+          $('#switch-theme').on('change', function(){
+            const next = this.checked ? 'light' : 'dark';
+            applyTheme(next); save(K_THEME,next);
+          });
+
+          // settings
+          $('#btn-rebuild-plan').on('click', function(){
+            const s = $('#setting-start-date').val() || todayISO();
+            save(K_START, s);
+            const plan = buildPlan(s); save(K_PLAN, plan);
+            renderWorkouts(plan, load(K_DONE,{}));
+            $('#plan-start-label').text(fmt(s));
+            alert('Plan rebuilt from selected start date.');
+          });
+
+          $('#btn-clear-all').on('click', function(){
+            if(!confirm('This will clear plan, completion, and tracking for Akhil. Continue?')) return;
+            [K_TRACK,K_PLAN,K_DONE,K_START].forEach(k=>localStorage.removeItem(k));
+            // Re-init
+            const s = todayISO(); save(K_START,s);
+            const plan = buildPlan(s); save(K_PLAN,plan); save(K_DONE,{}); save(K_TRACK,[]);
+            renderWorkouts(plan, {}); renderCharts([]); renderHistory([]); refreshTrackingSummary([]);
+            $('#plan-start-label').text(fmt(s));
+            alert('All cleared. Fresh start created.');
+          });
+
+          $('#btn-reset-workouts').on('click', function(){
+            if(confirm('Unmark all workouts as done?')){ save(K_DONE,{}); renderWorkouts(load(K_PLAN,[]), {}); }
+          });
+
+          // Dev: simple self-tests
+          $('#btn-run-tests').on('click', function(){
+            console.group('%cSelf-Tests','color:#00e5a8');
+            try{
+              // Test 1: buildPlan size & weekdays
+              const p = buildPlan(todayISO());
+              console.assert(p.length===8, 'Plan should have 8 weeks');
+              const w0 = p[0];
+              console.assert(w0.days.length===7, 'Each week should have 7 days');
+              console.assert(w0.days.filter(d=>d.isWorkout).length===5, 'Each week should have 5 workout days');
+
+              // Test 2: cardio mapping index 0..4
+              for(let i=0;i<5;i++){
+                const c = (function(){ return (function(){ return i; })(); })();
+                const cd = (function(idx){ return (idx>=0 && idx<5) ? true : false; })(i);
+                console.assert(cd, 'Day index within 0..4');
+                console.assert(!!cardioForDay(i,0), 'cardioForDay returns value');
+              }
+
+              // Test 3: localStorage roundtrip
+              const key = 'test_key_temp_' + Math.random().toString(36).slice(2);
+              localStorage.setItem(key, JSON.stringify({a:1}));
+              const rt = JSON.parse(localStorage.getItem(key));
+              console.assert(rt.a===1, 'localStorage roundtrip works');
+              localStorage.removeItem(key);
+
+              console.log('%cAll tests passed','color:#1ae5b2');
+            } catch(err){
+              console.error('Tests failed:', err);
+            } finally {
+              console.groupEnd();
+            }
+          });
+
+          // If user revisits with existing data, allow quick enter to Akhil
+          if(load(K_PLAN,null) || load(K_TRACK,[]).length>0){ $('#btn-enter-akhil').trigger('click'); }
+        });
+
+        // ------------------ Ensure start/plan helpers (declared after handlers so hoisted properly) ------------------
+        function ensureStart(){
+          let s = load(K_START, null);
+          if(!s){ s = todayISO(); save(K_START,s); }
+          $('#setting-start-date').val(s);
+          $('#plan-start-label').text(fmt(s));
+          return s;
+        }
+
+        function ensurePlan(){
+          const s = ensureStart();
+          let plan = load(K_PLAN, null);
+          if(!plan){ plan = buildPlan(s); save(K_PLAN, plan); }
+          return plan;
+        }
+
+        function applyTheme(theme){
+          document.body.setAttribute('data-theme', theme==='light' ? 'light' : 'dark');
+          const icon = document.querySelector('#btn-toggle-theme i');
+          if(icon){ icon.className = theme==='light' ? 'bi bi-moon' : 'bi bi-brightness-high'; }
+        }
+
+      })();
+    </script>
+  </body>
+</html>
