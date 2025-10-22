@@ -1,0 +1,8 @@
+<div class="user-selection-container">
+  <h2>Select User</h2>
+  <div class="user-buttons">
+    <button *ngFor="let user of users" (click)="selectUser(user.userId)">
+      {{ user.name }}
+    </button>
+  </div>
+</div>

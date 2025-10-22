@@ -1,0 +1,184 @@
+[
+  {
+    "userId": "akhil",
+    "name": "Akhil",
+    "startDate": "2025-10-21",
+    "plan": [
+      {
+        "week": 1,
+        "days": [
+          {
+            "day": 1,
+            "label": "Mon",
+            "type": "UpperA",
+            "isWorkout": true,
+            "exercises": [
+              { "name": "Converging Chest Press", "sets": "3×12", "notes": "Controlled tempo" },
+              { "name": "Diverging Lat Pulldown", "sets": "3×12", "notes": "Full stretch" },
+              { "name": "Seated Row", "sets": "3×12", "notes": "Squeeze shoulder blades" },
+              { "name": "Pec Fly", "sets": "3×15", "notes": "Slow eccentric" },
+              { "name": "Cable Woodchop", "sets": "2×12/side", "notes": "Controlled core twist" }
+            ],
+            "cardio": { "equipment": "Treadmill", "tip": "20 min brisk walk, HR 120 bpm" }
+          },
+          {
+            "day": 2,
+            "label": "Tue",
+            "type": "LowerA",
+            "isWorkout": true,
+            "exercises": [
+              { "name": "Leg Press", "sets": "3×15", "notes": "Moderate depth" },
+              { "name": "Prone Leg Curl", "sets": "3×15", "notes": "Hamstrings" },
+              { "name": "Leg Extension", "sets": "3×15", "notes": "Slow lower phase" },
+              { "name": "Hip Abduction", "sets": "2×15", "notes": "Glute activation" },
+              { "name": "Calf Press", "sets": "3×15", "notes": "Full stretch" }
+            ],
+            "cardio": { "equipment": "Upright Bike", "tip": "15 min low resistance" }
+          },
+          {
+            "day": 3,
+            "label": "Wed",
+            "type": "FullBody",
+            "isWorkout": true,
+            "exercises": [
+              { "name": "Functional Trainer Circuit", "sets": "3 rounds", "notes": "Push, pull, hinge" },
+              { "name": "Lat Pulldown", "sets": "2×12", "notes": "Form focus" },
+              { "name": "Overhead Press", "sets": "2×12", "notes": "Light weight" }
+            ],
+            "cardio": { "equipment": "Elliptical", "tip": "25 min steady HR 125" }
+          },
+          {
+            "day": 4,
+            "label": "Thu",
+            "type": "UpperB",
+            "isWorkout": true,
+            "exercises": [
+              { "name": "Overhead Press", "sets": "3×12", "notes": "Light" },
+              { "name": "Lateral Raise", "sets": "3×15", "notes": "Soft elbows" },
+              { "name": "Biceps Curl (Machine)", "sets": "3×12", "notes": "" },
+              { "name": "Triceps Press (Machine)", "sets": "3×12", "notes": "" },
+              { "name": "Rear Delt Fly", "sets": "3×15", "notes": "" }
+            ],
+            "cardio": { "equipment": "Treadmill", "tip": "Incline 2 %, 20 min" }
+          },
+          {
+            "day": 5,
+            "label": "Fri",
+            "type": "LowerB",
+            "isWorkout": true,
+            "exercises": [
+              { "name": "Leg Press", "sets": "3×15", "notes": "" },
+              { "name": "Calf Press", "sets": "3×15", "notes": "" },
+              { "name": "Hip Abduction/Adduction", "sets": "2×15 each", "notes": "" },
+              { "name": "Glute Bridge", "sets": "3×15", "notes": "Hold 1 s at top" }
+            ],
+            "cardio": { "equipment": "Stepmill", "tip": "10 min low speed" }
+          },
+          { "day": 6, "label": "Sat", "type": "Rest", "isWorkout": false, "exercises": [] },
+          { "day": 7, "label": "Sun", "type": "Rest", "isWorkout": false, "exercises": [] }
+        ]
+      }
+    ]
+  },
+  {
+    "userId": "wife",
+    "name": "Wife",
+    "startDate": "2025-10-21",
+    "plan": [
+      {
+        "week": 1,
+        "days": [
+          {
+            "day": 1,
+            "label": "Mon",
+            "type": "Ground",
+            "isWorkout": true,
+            "exercises": [
+              { "name": "Cat–Cow", "sets": "2×10", "notes": "Spinal mobility" },
+              { "name": "Glute Bridge", "sets": "3×12", "notes": "Hold at top" },
+              { "name": "Bird-Dog", "sets": "2×10/side", "notes": "Core activation" },
+              { "name": "Side-lying Clamshells", "sets": "3×15/side", "notes": "Light band" },
+              { "name": "Wall Push-ups", "sets": "2×10", "notes": "Neutral wrists" },
+              { "name": "Knee Plank", "sets": "3×20 s", "notes": "Brace core" }
+            ],
+            "cardio": { "equipment": "Treadmill/Bike", "tip": "15 min easy, HR 100–110" }
+          }
+        ]
+      },
+      {
+        "week": 3,
+        "days": [
+          {
+            "day": 1,
+            "label": "Mon",
+            "type": "UpperA",
+            "isWorkout": true,
+            "exercises": [
+              { "name": "Chest Press (Machine)", "sets": "3×12", "notes": "Light" },
+              { "name": "Seated Row", "sets": "3×12", "notes": "Posture focus" },
+              { "name": "Lat Pulldown", "sets": "2×12", "notes": "" },
+              { "name": "Pec Fly", "sets": "2×15", "notes": "Stretch" },
+              { "name": "Cable Woodchop", "sets": "2×12/side", "notes": "" },
+              { "name": "Plank (knees)", "sets": "3×20 s", "notes": "" }
+            ],
+            "cardio": { "equipment": "Treadmill", "tip": "15–20 min brisk walk" }
+          },
+          {
+            "day": 2,
+            "label": "Tue",
+            "type": "LowerA",
+            "isWorkout": true,
+            "exercises": [
+              { "name": "Prone Leg Curl", "sets": "3×15", "notes": "" },
+              { "name": "Hip Abduction", "sets": "3×15", "notes": "" },
+              { "name": "Hip Adduction", "sets": "2×15", "notes": "" },
+              { "name": "Glute Bridge", "sets": "3×15", "notes": "" },
+              { "name": "Calf Raise", "sets": "2×15", "notes": "" }
+            ],
+            "cardio": { "equipment": "Bike", "tip": "15 min steady" }
+          },
+          {
+            "day": 3,
+            "label": "Wed",
+            "type": "FullBody",
+            "isWorkout": true,
+            "exercises": [
+              { "name": "Cable Crossover", "sets": "3×15", "notes": "" },
+              { "name": "Lat Pulldown", "sets": "2×12", "notes": "" },
+              { "name": "Seated Row", "sets": "2×15", "notes": "" },
+              { "name": "Step-up (low platform)", "sets": "2×8/side", "notes": "" }
+            ],
+            "cardio": { "equipment": "Elliptical", "tip": "20 min steady" }
+          },
+          {
+            "day": 4,
+            "label": "Thu",
+            "type": "UpperB",
+            "isWorkout": true,
+            "exercises": [
+              { "name": "Overhead Press", "sets": "2×12", "notes": "" },
+              { "name": "Lateral Raise", "sets": "3×15", "notes": "" },
+              { "name": "Biceps Curl", "sets": "2×12", "notes": "" },
+              { "name": "Triceps Press", "sets": "2×12", "notes": "" }
+            ],
+            "cardio": { "equipment": "Treadmill", "tip": "Incline 2 %, 15–20 min" }
+          },
+          {
+            "day": 5,
+            "label": "Fri",
+            "type": "LowerB",
+            "isWorkout": true,
+            "exercises": [
+              { "name": "Hip Abduction/Adduction", "sets": "2×15 each", "notes": "" },
+              { "name": "Calf Press", "sets": "3×15", "notes": "" },
+              { "name": "Step-ups", "sets": "2×8", "notes": "Bodyweight" }
+            ],
+            "cardio": { "equipment": "Stepmill", "tip": "8–10 min low pace" }
+          },
+          { "day": 6, "label": "Sat", "type": "Rest", "isWorkout": false, "exercises": [] },
+          { "day": 7, "label": "Sun", "type": "Rest", "isWorkout": false, "exercises": [] }
+        ]
+      }
+    ]
+  }
+]

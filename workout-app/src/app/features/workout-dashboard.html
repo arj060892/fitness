@@ -1,0 +1,34 @@
+<div *ngIf="user$ | async as user" class="dashboard-container">
+  <header>
+    <h1>{{ user.name }}'s Workout Plan</h1>
+    <div class="header-controls">
+      <input type="date" [value]="user.startDate" (change)="updateStartDate($event)">
+      <button (click)="changeUser()">Change User</button>
+    </div>
+  </header>
+
+  <div *ngFor="let week of user.plan" class="week-container">
+    <h2>Week {{ week.week }}</h2>
+    <div class="days-grid">
+      <div *ngFor="let day of week.days" class="day-card" [class.completed]="day.completed">
+        <div class="day-header" (click)="toggleDayCompletion(day)">
+          <h3>{{ day.label }} - {{ day.type }}</h3>
+          <span>{{ day.completed ? '✓' : '' }}</span>
+        </div>
+        <div *ngIf="day.isWorkout">
+          <ul>
+            <li *ngFor="let exercise of day.exercises">
+              <strong>{{ exercise.name }}</strong>: {{ exercise.sets }} <em>({{ exercise.notes }})</em>
+            </li>
+          </ul>
+          <div *ngIf="day.cardio" class="cardio-section">
+            <strong>Cardio:</strong> {{ day.cardio.equipment }} - {{ day.cardio.tip }}
+          </div>
+        </div>
+        <div *ngIf="!day.isWorkout">
+          <p>Rest Day</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
