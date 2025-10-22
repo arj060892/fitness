@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Akhil Weight Loss – Mobile Tracker</title>
+    <title>Akhil Weight Loss - Mobile Tracker</title>
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -24,35 +24,103 @@
       :root {
         --brand: #0d6efd;
       }
+      body {
+        color-scheme: dark;
+        --color-bg: #0b1220;
+        --color-text: #e9eef6;
+        --color-muted: #9fb4d9;
+        --color-card: #111a2e;
+        --color-surface: #0f1830;
+        --color-border: #23304e;
+        --color-border-strong: #263554;
+        --color-tile-start: #0f1a33;
+        --color-tile-end: #0c1630;
+        --color-tile-border: #1f2b46;
+        --color-avatar-bg: #122044;
+        --color-avatar-text: #79aaff;
+        --color-nav-bg: rgba(11, 18, 32, 0.75);
+        --color-nav-border: #263554;
+        --color-nav-link: #cfe0ff;
+        --color-nav-active: #ffffff;
+        --color-progress-bg: #19233d;
+        --color-badge-bg: #162447;
+        --color-badge-border: #284274;
+        --color-badge-text: #b8d7ff;
+        --color-list-bg: #0f1830;
+        --color-list-border: #203154;
+        --color-tap-border: #213153;
+        --color-icon-accent: #79aaff;
+        --color-divider: #2a3a60;
+        --color-chart-axis: #bcd1ff;
+        --color-chart-legend: #cfe0ff;
+      }
+      body[data-theme="light"] {
+        color-scheme: light;
+        --color-bg: #f6f8fd;
+        --color-text: #24324d;
+        --color-muted: #6c7b93;
+        --color-card: #ffffff;
+        --color-surface: #f2f6ff;
+        --color-border: #d5def0;
+        --color-border-strong: #c7d4ec;
+        --color-tile-start: #ffffff;
+        --color-tile-end: #f2f6ff;
+        --color-tile-border: #d0dcf0;
+        --color-avatar-bg: #e6eeff;
+        --color-avatar-text: #1f4ea3;
+        --color-nav-bg: rgba(246, 248, 253, 0.9);
+        --color-nav-border: #d5def0;
+        --color-nav-link: #546480;
+        --color-nav-active: #0d6efd;
+        --color-progress-bg: #d9e3f7;
+        --color-badge-bg: #e6efff;
+        --color-badge-border: #cbd9f4;
+        --color-badge-text: #2d4f92;
+        --color-list-bg: #ffffff;
+        --color-list-border: #d5def0;
+        --color-tap-border: #cedbf1;
+        --color-icon-accent: #1f4ea3;
+        --color-divider: #cedbf1;
+        --color-chart-axis: #5f6f8b;
+        --color-chart-legend: #3a4f74;
+      }
       html,
       body {
         height: 100%;
-        background: #0b1220;
+        background: var(--color-bg);
       }
       body {
-        color: #e9eef6;
+        color: var(--color-text);
+        background-color: var(--color-bg);
+        transition: background-color 0.3s ease, color 0.3s ease;
       }
       .app-container {
         max-width: 720px;
         margin: 0 auto;
       }
       .card {
-        background: #111a2e;
-        border: 1px solid #23304e;
+        background: var(--color-card);
+        border: 1px solid var(--color-border);
+        transition: background-color 0.3s ease, border-color 0.3s ease;
       }
       .card-header,
       .offcanvas,
       .modal-content {
-        background: #0f1830;
-        border-color: #23304e;
-        color: #e9eef6;
+        background: var(--color-surface) !important;
+        border-color: var(--color-border) !important;
+        color: var(--color-text) !important;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
       }
       .form-control,
       .form-select,
       .form-check-input {
-        background: #0f1830;
-        color: #e9eef6;
-        border-color: #263554;
+        background-color: var(--color-surface);
+        color: var(--color-text);
+        border-color: var(--color-border-strong);
+        accent-color: var(--brand);
+      }
+      .form-control::placeholder {
+        color: var(--color-muted);
       }
       .form-control:focus,
       .form-select:focus {
@@ -62,6 +130,14 @@
       .btn {
         border-radius: 14px;
       }
+      body[data-theme="light"] .btn-outline-light {
+        color: #24324d;
+        border-color: #24324d;
+      }
+      body[data-theme="light"] .btn-outline-light:hover {
+        background-color: rgba(36, 50, 77, 0.1);
+        color: #24324d;
+      }
       .btn-icon {
         width: 56px;
         height: 56px;
@@ -70,10 +146,15 @@
         justify-content: center;
       }
       .user-tile {
-        background: linear-gradient(145deg, #0f1a33, #0c1630);
-        border: 1px solid #1f2b46;
+        background: linear-gradient(
+          145deg,
+          var(--color-tile-start),
+          var(--color-tile-end)
+        );
+        border: 1px solid var(--color-tile-border);
         border-radius: 18px;
         padding: 18px;
+        transition: background 0.3s ease, border-color 0.3s ease;
       }
       .user-tile .avatar {
         width: 64px;
@@ -82,8 +163,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #122044;
-        color: #79aaff;
+        background: var(--color-avatar-bg);
+        color: var(--color-avatar-text);
         font-size: 28px;
       }
       .sticky-bottom-nav {
@@ -91,54 +172,56 @@
         bottom: 0;
         z-index: 1020;
         backdrop-filter: blur(6px);
-        background: rgba(11, 18, 32, 0.75);
-        border-top: 1px solid #263554;
+        background: var(--color-nav-bg);
+        border-top: 1px solid var(--color-nav-border);
+        transition: background-color 0.3s ease, border-color 0.3s ease;
       }
       .nav-link {
-        color: #cfe0ff;
+        color: var(--color-nav-link);
       }
       .nav-link.active {
-        color: #fff;
+        color: var(--color-nav-active);
       }
       .progress {
         height: 10px;
-        background: #19233d;
+        background: var(--color-progress-bg);
       }
       .progress-bar {
         background: linear-gradient(90deg, #41b7ff, #1ae5b2);
       }
       .badge-soft {
-        background: #162447;
-        border: 1px solid #284274;
-        color: #b8d7ff;
+        background: var(--color-badge-bg);
+        border: 1px solid var(--color-badge-border);
+        color: var(--color-badge-text);
       }
       .list-group-item {
-        background: #0f1830;
-        color: #dfe9fb;
-        border-color: #203154;
+        background: var(--color-list-bg);
+        color: var(--color-text);
+        border-color: var(--color-list-border);
       }
       .tap-target {
         padding: 14px 16px;
         border-radius: 16px;
-        border: 1px solid #213153;
+        border: 1px solid var(--color-tap-border);
         display: flex;
         gap: 12px;
         align-items: center;
+        background: var(--color-surface);
       }
       .tap-target i {
         font-size: 1.4rem;
-        color: #79aaff;
+        color: var(--color-icon-accent);
       }
       .tiny {
         font-size: 0.8rem;
         opacity: 0.9;
       }
       .muted {
-        color: #9fb4d9;
+        color: var(--color-muted);
       }
       .divider {
         height: 1px;
-        border-top: 1px dashed #2a3a60;
+        border-top: 1px dashed var(--color-divider);
         margin: 0.75rem 0;
       }
       @media (max-width: 576px) {
@@ -150,7 +233,7 @@
       }
     </style>
   </head>
-  <body>
+  <body data-theme="dark">
     <div class="app-container p-3 pb-5">
       <!-- Landing: user select -->
       <div id="screen-users" class="d-block">
@@ -168,7 +251,7 @@
                 <div class="avatar"><i class="bi bi-person-circle"></i></div>
                 <div>
                   <div class="fw-semibold">Akhil</div>
-                  <div class="tiny muted">Weight loss • 8-week plan</div>
+                  <div class="tiny muted">Weight loss - 8-week plan</div>
                 </div>
               </div>
               <button class="btn btn-primary btn-sm" id="btn-enter-akhil">
@@ -181,22 +264,23 @@
               class="user-tile d-flex align-items-center justify-content-between"
             >
               <div class="d-flex align-items-center gap-3">
-                <div class="avatar"><i class="bi bi-person"></i></div>
+                <div class="avatar"><i class="bi bi-person-heart"></i></div>
                 <div>
-                  <div class="fw-semibold">User 2</div>
-                  <div class="tiny muted">(placeholder)</div>
+                  <div class="fw-semibold">Wife</div>
+                  <div class="tiny muted">8-week partner plan</div>
                 </div>
               </div>
-              <button class="btn btn-outline-secondary btn-sm" disabled>
-                <i class="bi bi-lock me-1"></i> Locked
+              <button class="btn btn-primary btn-sm" id="btn-enter-wife">
+                <i class="bi bi-box-arrow-in-right me-1"></i> Open
               </button>
             </div>
           </div>
         </div>
 
         <div class="mt-4 small muted">
-          <i class="bi bi-phone me-1"></i> Mobile-first UI • All data saved
-          locally in your browser (no login)
+          <i class="bi bi-phone me-1"></i> Mobile-first UI
+          ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢
+          All data saved locally in your browser (no login)
         </div>
       </div>
 
@@ -204,15 +288,33 @@
       <div id="screen-akhil" class="d-none">
         <header class="d-flex align-items-center justify-content-between mb-3">
           <div class="d-flex align-items-center gap-2">
-            <button class="btn btn-outline-light btn-sm" id="btn-back-users">
+            <button
+              type="button"
+              class="btn btn-outline-light btn-sm"
+              id="btn-back-users"
+            >
               <i class="bi bi-arrow-left"></i>
             </button>
-            <h2 class="h5 fw-bold mb-0">Akhil</h2>
+            <h2 class="h5 fw-bold mb-0 app-user-name">Akhil</h2>
             <span class="badge rounded-pill badge-soft ms-2">8-week plan</span>
           </div>
-          <button class="btn btn-outline-info btn-sm" id="btn-open-settings">
-            <i class="bi bi-gear"></i>
-          </button>
+          <div class="d-flex align-items-center gap-2">
+            <button
+              type="button"
+              class="btn btn-outline-secondary btn-sm"
+              id="btn-toggle-theme"
+              aria-label="Switch to light mode"
+            >
+              <i class="bi bi-brightness-high"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-info btn-sm"
+              id="btn-open-settings"
+            >
+              <i class="bi bi-gear"></i>
+            </button>
+          </div>
         </header>
 
         <!-- Summary cards -->
@@ -220,10 +322,10 @@
           <div class="col-6">
             <div class="card p-3">
               <div class="tiny muted">Current Weight</div>
-              <div class="fs-4 fw-semibold" id="summary-weight">—</div>
+              <div class="fs-4 fw-semibold" id="summary-weight">-</div>
               <div class="tiny">
                 <i class="bi bi-graph-down me-1"></i
-                ><span id="summary-weight-diff">—</span> since start
+                ><span id="summary-weight-diff">-</span> since start
               </div>
             </div>
           </div>
@@ -328,7 +430,7 @@
                     step="0.5"
                     class="form-control"
                     id="trk-waist"
-                    placeholder="—"
+                    placeholder="ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â"
                   />
                 </div>
                 <div class="col-12">
@@ -511,10 +613,29 @@
       </div>
       <div class="offcanvas-body small">
         <div class="mb-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <label class="form-label mb-0" for="switch-theme">Appearance</label>
+            <div class="form-check form-switch m-0">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="switch-theme"
+              />
+              <label class="form-check-label tiny ms-2" for="switch-theme"
+                >Light mode</label
+              >
+            </div>
+          </div>
+          <div class="tiny muted mt-1">
+            Toggle between light and dark themes for the tracker.
+          </div>
+        </div>
+        <div class="mb-3">
           <label class="form-label">Plan start date</label>
           <input type="date" id="setting-start-date" class="form-control" />
           <div class="tiny muted mt-1">
-            Used to generate the 8-week schedule (Mon–Fri workouts).
+            Used to generate the 8-week schedule (Mon&ndash;Fri workouts).
           </div>
         </div>
         <div class="mb-3 grid-2">
@@ -534,220 +655,660 @@
 
     <script>
       // Wrapped in a single IIFE to avoid leaking globals.
-      (function(){
-        'use strict';
+      (function () {
+        "use strict";
 
         // ------------------ Storage Keys ------------------
-        const U_AKHIL = 'akhil';
-        const NS = (k) => `wl_${U_AKHIL}_${k}`;
-        const K_TRACK = NS('tracking'); // array of entries
-        const K_PLAN  = NS('plan');     // array of days with exercises
-        const K_DONE  = NS('done');     // map dayId => true
-        const K_START = NS('start');    // ISO date
-        const K_THEME = NS('theme');    // 'dark' | 'light'
+        const USERS = {
+          akhil: { id: "akhil", name: "Akhil" },
+          wife: { id: "wife", name: "Wife" },
+        };
+
+        let CURRENT_USER = USERS.akhil.id;
+
+        const NS = (userId, k) => `wl_${userId}_${k}`;
+        const K = (userId) => ({
+          TRACK: NS(userId, "tracking"), // array of entries
+          PLAN: NS(userId, "plan"), // array of days with exercises
+          DONE: NS(userId, "done"), // map dayId => true
+          START: NS(userId, "start"), // ISO date
+          THEME: "wl_theme", // global theme preference
+        });
+        const currentKeys = () => K(CURRENT_USER);
+        const userMeta = (userId) => USERS[userId] || USERS.akhil;
+        function userHasData(userId) {
+          const keys = K(userId);
+          if (load(keys.PLAN, null)) return true;
+          const entries = load(keys.TRACK, []);
+          return Array.isArray(entries) && entries.length > 0;
+        }
 
         // ------------------ Utilities ------------------
-        const todayISO = () => new Date().toISOString().slice(0,10);
-        const fmt = (d) => new Date(d).toLocaleDateString(undefined, {year:'numeric', month:'short', day:'numeric'});
-        const load = (k, def) => { try { const v = localStorage.getItem(k); return v? JSON.parse(v): def; } catch { return def; } };
+        const todayISO = () => new Date().toISOString().slice(0, 10);
+        const fmt = (d) =>
+          new Date(d).toLocaleDateString(undefined, {
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          });
+        const load = (k, def) => {
+          try {
+            const v = localStorage.getItem(k);
+            return v ? JSON.parse(v) : def;
+          } catch {
+            return def;
+          }
+        };
         const save = (k, v) => localStorage.setItem(k, JSON.stringify(v));
-        const uid = (w, i) => `W${w+1}D${i+1}`; // unique day id within plan
+        const uid = (userId, w, i) => `W${w + 1}D${i + 1}_${userId}`; // unique day id within plan
 
         // ------------------ Workout Plan Generator ------------------
-        function baseDayTemplate(type, weekIndex){
+        function alignToMonday(startDate) {
+          const start = new Date(startDate);
+          const day = start.getDay();
+          const diffToMon = (day + 6) % 7; // 0 for Monday
+          start.setDate(start.getDate() - diffToMon);
+          return start;
+        }
+
+        function akhilDayTemplate(type, weekIndex) {
           const month2 = weekIndex >= 4; // weeks 5-8
-          const reps12 = month2 ? '3×10–12' : '3×12–15';
-          const reps15 = month2 ? '3×12–15' : '3×15';
-          const light2 = month2 ? '2×12–15' : '2×15';
-          const core3  = month2 ? '4×20–30s' : '3×20s';
+          const reps12 = month2
+            ? "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â10ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“12"
+            : "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â12ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“15";
+          const reps15 = month2
+            ? "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â12ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“15"
+            : "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â15";
+          const light2 = month2
+            ? "2ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â12ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“15"
+            : "2ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â15";
+          const core3 = month2
+            ? "4ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â20ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“30s"
+            : "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â20s";
 
           const D = {
-            'UpperA': [
-              { n:'Converging Chest Press', s:reps12, q:'Controlled, no lock-out' },
-              { n:'Diverging Seated Row', s:'3×12', q:'Squeeze shoulder blades' },
-              { n:'Lat Pulldown', s:'3×10–12', q:'Smooth; avoid jerks' },
-              { n:'Pec Fly', s:reps15, q:'Light stretch' },
-              { n:'Seated Dip', s:reps12, q:'Elbows track' },
-              { n:'Plank (knees)', s:core3, q:'Brace core for back' },
-              { n:'Cable Woodchop', s:light2, q:'Each side' }
+            UpperA: [
+              {
+                n: "Converging Chest Press",
+                s: reps12,
+                q: "Controlled, no lock-out",
+              },
+              {
+                n: "Diverging Seated Row",
+                s: "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â12",
+                q: "Squeeze shoulder blades",
+              },
+              {
+                n: "Lat Pulldown",
+                s: "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â10ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“12",
+                q: "Smooth; avoid jerks",
+              },
+              { n: "Pec Fly", s: reps15, q: "Light stretch" },
+              { n: "Seated Dip", s: reps12, q: "Elbows track" },
+              { n: "Plank (knees)", s: core3, q: "Brace core for back" },
+              { n: "Cable Woodchop", s: light2, q: "Each side" },
             ],
-            'LowerA': [
-              { n:'Leg Press', s:'4×12 (light)', q:'Feet high & wide' },
-              { n:'Prone Leg Curl', s:'3×15', q:'Hamstrings for knee' },
-              { n:'Leg Extension', s:'2×12 (slow)', q:'Light to protect knee' },
-              { n:'Hip Abduction', s:'3×15', q:'Glute medius' },
-              { n:'Hip Adduction', s:'2×15', q:'Inner thigh support' },
-              { n:'Glute Bridge', s:'3×15', q:'Posterior chain' },
-              { n:'Side Plank (knees)', s:core3, q:'Each side' }
+            LowerA: [
+              {
+                n: "Leg Press",
+                s: "4ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â12 (light)",
+                q: "Feet high & wide",
+              },
+              {
+                n: "Prone Leg Curl",
+                s: "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â15",
+                q: "Hamstrings for knee",
+              },
+              {
+                n: "Leg Extension",
+                s: "2ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â12 (slow)",
+                q: "Light to protect knee",
+              },
+              {
+                n: "Hip Abduction",
+                s: "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â15",
+                q: "Glute medius",
+              },
+              {
+                n: "Hip Adduction",
+                s: "2ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â15",
+                q: "Inner thigh support",
+              },
+              {
+                n: "Glute Bridge",
+                s: "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â15",
+                q: "Posterior chain",
+              },
+              { n: "Side Plank (knees)", s: core3, q: "Each side" },
             ],
-            'FullBody': [
-              { n:'Cable Crossover (standing)', s:'3×15', q:'Light tension' },
-              { n:'Lat Pulldown', s:'3×12', q:'' },
-              { n:'Seated Row', s:'2×15', q:'' },
-              { n:'Step-up (low platform)', s:'3×10/side', q:'Bodyweight or light DB' },
-              { n:'DB Deadlift (very light)', s:'2×12', q:'Hinge, neutral back' }
+            FullBody: [
+              {
+                n: "Cable Crossover (standing)",
+                s: "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â15",
+                q: "Light tension",
+              },
+              {
+                n: "Lat Pulldown",
+                s: "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â12",
+                q: "",
+              },
+              {
+                n: "Seated Row",
+                s: "2ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â15",
+                q: "",
+              },
+              {
+                n: "Step-up (low platform)",
+                s: "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â10/side",
+                q: "Bodyweight or light DB",
+              },
+              {
+                n: "DB Deadlift (very light)",
+                s: "2ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â12",
+                q: "Hinge, neutral back",
+              },
             ],
-            'UpperB': [
-              { n:'Overhead Press (machine)', s:'3×12', q:'Core tight' },
-              { n:'Lateral Raise (machine)', s:reps15, q:'Soft elbows' },
-              { n:'Biceps Curl (machine)', s:'3×12', q:'' },
-              { n:'Triceps Press (machine)', s:'3×12', q:'' },
-              { n:'Face Pull (cables)', s:'3×15', q:'Rear delts' },
-              { n:'Abdominal Crunch (machine)', s:'3×15', q:'' }
+            UpperB: [
+              {
+                n: "Overhead Press (machine)",
+                s: "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â12",
+                q: "Core tight",
+              },
+              { n: "Lateral Raise (machine)", s: reps15, q: "Soft elbows" },
+              {
+                n: "Biceps Curl (machine)",
+                s: "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â12",
+                q: "",
+              },
+              {
+                n: "Triceps Press (machine)",
+                s: "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â12",
+                q: "",
+              },
+              {
+                n: "Face Pull (cables)",
+                s: "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â15",
+                q: "Rear delts",
+              },
+              {
+                n: "Abdominal Crunch (machine)",
+                s: "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â15",
+                q: "",
+              },
             ],
-            'LowerB': [
-              { n:'Leg Press (single-leg)', s:'3×12/leg', q:'Control range' },
-              { n:'Calf Press', s:'3×15', q:'Full stretch' },
-              { n:'Step-ups', s:'2×10', q:'Balance focus' },
-              { n:'Hip Abd + Add', s:'2×15 each', q:'Superset' }
-            ]
+            LowerB: [
+              {
+                n: "Leg Press (single-leg)",
+                s: "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â12/leg",
+                q: "Control range",
+              },
+              {
+                n: "Calf Press",
+                s: "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â15",
+                q: "Full stretch",
+              },
+              {
+                n: "Step-ups",
+                s: "2ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â10",
+                q: "Balance focus",
+              },
+              {
+                n: "Hip Abd + Add",
+                s: "2ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â15 each",
+                q: "Superset",
+              },
+            ],
           };
 
-          if (month2 && type==='UpperA') {
-            D[type].splice(1,0,{ n:'Incline Bench Press (machine)', s:'3×10–12', q:'Moderate load' });
+          if (month2 && type === "UpperA") {
+            D[type].splice(1, 0, {
+              n: "Incline Bench Press (machine)",
+              s: "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â10ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“12",
+              q: "Moderate load",
+            });
           }
-          if (month2 && type==='FullBody') {
-            D[type].push({ n:'Functional Trainer: Squat to Cable Row', s:'3×12', q:'Light squat depth' });
+          if (month2 && type === "FullBody") {
+            D[type].push({
+              n: "Functional Trainer: Squat to Cable Row",
+              s: "3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â12",
+              q: "Light squat depth",
+            });
           }
           return D[type];
         }
 
-        function cardioForDay(dayIndex, weekIndex){
-          const month2 = weekIndex>=4;
+        function akhilCardioForDay(dayIndex, weekIndex) {
+          const month2 = weekIndex >= 4;
           const base = [
-            { eq:'Treadmill', tip: month2? 'Incline walk 3–4% • 25–30 min':'Incline walk 3% • 20–25 min' },
-            { eq:'Upright Bike', tip: month2? 'Steady 25–30 min':'Steady 20–22 min' },
-            { eq:'Elliptical', tip: month2? '15 min steady + 10 min cool/mod':'15 + 5 min cool' },
-            { eq:'Treadmill', tip: month2? 'Intervals 1:1 × 12–15 min':'Intervals 1:2 × 12 min' },
-            { eq:'Stepmill', tip: month2? 'Low speed 18–20 min':'Low speed 15 min' }
+            {
+              eq: "Treadmill",
+              tip: month2
+                ? "Incline walk 3ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“4% ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ 25ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“30 min"
+                : "Incline walk 3% ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ 20ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“25 min",
+            },
+            {
+              eq: "Upright Bike",
+              tip: month2
+                ? "Steady 25ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“30 min"
+                : "Steady 20ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“22 min",
+            },
+            {
+              eq: "Elliptical",
+              tip: month2
+                ? "15 min steady + 10 min cool/mod"
+                : "15 + 5 min cool",
+            },
+            {
+              eq: "Treadmill",
+              tip: month2
+                ? "Intervals 1:1 ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 12ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“15 min"
+                : "Intervals 1:2 ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â 12 min",
+            },
+            {
+              eq: "Stepmill",
+              tip: month2
+                ? "Low speed 18ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“20 min"
+                : "Low speed 15 min",
+            },
           ];
           return base[dayIndex];
         }
 
-        function buildPlan(startDate){
-          const start = new Date(startDate);
-          // Align start to Monday for consistency
-          const day = start.getDay();
-          const diffToMon = (day+6)%7; // 0 for Mon
-          start.setDate(start.getDate() - diffToMon);
+        function buildPlanAkhil(startDate) {
+          const start = alignToMonday(startDate);
 
           const weeks = [];
-          const TYPES = ['UpperA','LowerA','FullBody','UpperB','LowerB'];
+          const TYPES = ["UpperA", "LowerA", "FullBody", "UpperB", "LowerB"];
 
-          for(let w=0; w<8; w++){
+          for (let w = 0; w < 8; w++) {
             const days = [];
-            for(let i=0; i<7; i++){
+            for (let i = 0; i < 7; i++) {
               const d = new Date(start);
-              d.setDate(d.getDate() + w*7 + i);
-              const isWorkout = i<5; // Mon-Fri
-              const type = isWorkout? TYPES[i] : 'Rest';
+              d.setDate(d.getDate() + w * 7 + i);
+              const isWorkout = i < 5; // Mon-Fri
+              const type = isWorkout ? TYPES[i] : "Rest";
               const entry = {
-                id: uid(w,i),
-                date: d.toISOString().slice(0,10),
+                id: uid(USERS.akhil.id, w, i),
+                date: d.toISOString().slice(0, 10),
                 label: fmt(d),
                 isWorkout,
                 type,
-                exercises: isWorkout ? baseDayTemplate(type, w) : [],
-                cardio: isWorkout ? cardioForDay(i, w) : null
+                exercises: isWorkout ? akhilDayTemplate(type, w) : [],
+                cardio: isWorkout ? akhilCardioForDay(i, w) : null,
               };
               days.push(entry);
             }
-            weeks.push({ week:w+1, days });
+            weeks.push({ week: w + 1, days });
           }
           return weeks;
         }
 
-        // ------------------ Tracking ------------------
-        function refreshTrackingSummary(entries){
-          if(entries.length===0){
-            $('#summary-weight').text('—');
-            $('#summary-weight-diff').text('—');
-            return;
-          }
-          const sorted = [...entries].sort((a,b)=>a.date.localeCompare(b.date));
-          const first = sorted[0];
-          const last  = sorted[sorted.length-1];
-          $('#summary-weight').text(`${last.weight} kg`);
-          const diff = (last.weight - first.weight).toFixed(1);
-          const txt  = (diff>0? '+':'' ) + diff + ' kg';
-          $('#summary-weight-diff').text(txt);
+        function wifeGroundExercises() {
+          return [
+            { n: "Cat-Cow", s: "2x10", q: "Slow spinal mobilization" },
+            { n: "Glute Bridge", s: "3x12", q: "Squeeze at top" },
+            { n: "Bird-Dog", s: "2x10/side", q: "Neutral spine" },
+            { n: "Thread the Needle", s: "2x8/side", q: "" },
+            {
+              n: "Side-lying Clamshells",
+              s: "3x15/side",
+              q: "Light band if available",
+            },
+            { n: "Wall Push-ups", s: "2x10", q: "Controlled tempo" },
+            { n: "Knee Plank", s: "3x20s", q: "Brace core" },
+          ];
         }
 
-        function renderHistory(entries){
-          const $list = $('#trk-history').empty();
-          const sorted = [...entries].sort((a,b)=>b.date.localeCompare(a.date));
-          if(sorted.length===0){
-            $list.append('<li class="list-group-item tiny">No entries yet. Add your first above.</li>');
+        function wifeGroundCardio() {
+          return { eq: "Treadmill/Bike", tip: "15-20 min easy (HR 100-110)" };
+        }
+
+        function wifeDayTemplate(type, weekIndex) {
+          const month2 = weekIndex >= 4;
+          const reps12 = month2 ? "3x10-12" : "3x12-15";
+          const reps15 = month2 ? "3x12-15" : "3x15";
+          const light2 = month2 ? "2x12-15" : "2x15";
+          const core3 = month2 ? "4x20-30s" : "3x20s";
+
+          const D = {
+            UpperA: [
+              { n: "Chest Press (machine)", s: reps12, q: "Light load" },
+              {
+                n: "Seated Row (machine)",
+                s: "3x12",
+                q: "Scapular retraction",
+              },
+              { n: "Lat Pulldown", s: "2x12", q: "Smooth tempo" },
+              { n: "Pec Fly (machine)", s: reps15, q: "Stretch only" },
+              { n: "Cable Woodchop", s: light2, q: "Each side" },
+              { n: "Plank (knees)", s: core3, q: "" },
+            ],
+            LowerA:
+              weekIndex === 2
+                ? [
+                    { n: "Prone Leg Curl", s: "3x15", q: "Hamstrings" },
+                    { n: "Hip Abduction", s: "3x15", q: "Glute medius" },
+                    { n: "Hip Adduction", s: "2x15", q: "Inner thigh" },
+                    { n: "Glute Bridge", s: "3x15", q: "Posterior chain" },
+                    { n: "Calf Raise (machine)", s: "2x15", q: "Full stretch" },
+                    { n: "Side Plank (knees)", s: core3, q: "" },
+                  ]
+                : [
+                    {
+                      n: "Leg Press",
+                      s: "3x12 (light)",
+                      q: "Feet high, shallow range",
+                    },
+                    { n: "Prone Leg Curl", s: "3x15", q: "" },
+                    { n: "Hip Abduction", s: "3x15", q: "" },
+                    { n: "Hip Adduction", s: "2x15", q: "" },
+                    { n: "Calf Raise (machine)", s: "2x15", q: "" },
+                    { n: "Side Plank (knees)", s: core3, q: "" },
+                  ],
+            FullBody: [
+              { n: "Cable Crossover (standing)", s: "3x15", q: "Light" },
+              { n: "Lat Pulldown", s: "2x12", q: "" },
+              { n: "Seated Row", s: "2x15", q: "" },
+              {
+                n: "Step-up (low platform)",
+                s: "2x8/side",
+                q: "Bodyweight",
+              },
+              { n: "DB Deadlift (very light)", s: "2x12", q: "Hinge pattern" },
+              { n: "Bird-Dog", s: "3x10/side", q: "Core stability" },
+            ],
+            UpperB: [
+              { n: "Overhead Press (machine)", s: "2-3x12", q: "Light" },
+              { n: "Lateral Raise (machine)", s: reps15, q: "Soft elbows" },
+              { n: "Biceps Curl (machine)", s: "2-3x12", q: "" },
+              { n: "Triceps Press (machine)", s: "2-3x12", q: "" },
+              { n: "Face Pull (cables)", s: "3x15", q: "Posture" },
+              { n: "Abdominal Crunch (machine)", s: "3x15", q: "" },
+            ],
+            LowerB: [
+              {
+                n: "Leg Press (single-leg)",
+                s: "2-3x10/leg",
+                q: "Use only from Week 4+ if comfortable",
+              },
+              { n: "Calf Press", s: "3x15", q: "" },
+              { n: "Step-ups", s: "2x8", q: "Balance" },
+              { n: "Hip Abd + Add", s: "2x15 each", q: "Superset" },
+              { n: "Dead Bug", s: "3x10", q: "Slow and controlled" },
+            ],
+          };
+
+          return D[type];
+        }
+
+        function wifeCardioForDay(dayIndex, weekIndex) {
+          const month2 = weekIndex >= 4;
+          const base = [
+            {
+              eq: "Treadmill",
+              tip: month2
+                ? "Incline 2-3% ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ 20-25 min"
+                : "Incline 2% ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ 15-20 min",
+            },
+            {
+              eq: "Upright Bike",
+              tip: month2 ? "Steady 20-25 min" : "Steady 15-20 min",
+            },
+            {
+              eq: "Elliptical",
+              tip: month2
+                ? "15 min steady + 5-10 cool"
+                : "12-15 min steady + 5 cool",
+            },
+            {
+              eq: "Treadmill",
+              tip: month2
+                ? "Intervals 1:1 for 10-12 min"
+                : "Intervals 1:2 for 8-10 min",
+            },
+            {
+              eq: "Stepmill",
+              tip: month2 ? "Low speed 12-15 min" : "Low speed 8-10 min",
+            },
+          ];
+          return base[dayIndex];
+        }
+
+        function buildPlanWife(startDate) {
+          const start = alignToMonday(startDate);
+          const weeks = [];
+          const TYPES = ["UpperA", "LowerA", "FullBody", "UpperB", "LowerB"];
+
+          for (let w = 0; w < 8; w++) {
+            const days = [];
+            for (let i = 0; i < 7; i++) {
+              const d = new Date(start);
+              d.setDate(d.getDate() + w * 7 + i);
+              const dateISO = d.toISOString().slice(0, 10);
+              const label = fmt(d);
+
+              let isWorkout = i < 5;
+              let type = "Rest";
+              let exercises = [];
+              let cardio = null;
+
+              if (w < 2 && i < 5) {
+                type = "Ground";
+                exercises = wifeGroundExercises();
+                cardio = wifeGroundCardio();
+              } else if (i < 5) {
+                type = TYPES[i];
+                exercises = wifeDayTemplate(type, w);
+                cardio = wifeCardioForDay(i, w);
+              } else {
+                isWorkout = false;
+              }
+
+              days.push({
+                id: uid(USERS.wife.id, w, i),
+                date: dateISO,
+                label,
+                isWorkout,
+                type,
+                exercises,
+                cardio,
+              });
+            }
+            weeks.push({ week: w + 1, days });
+          }
+          return weeks;
+        }
+
+        function buildPlanForUser(userId, startDate) {
+          if (userId === USERS.wife.id) {
+            return buildPlanWife(startDate);
+          }
+          return buildPlanAkhil(startDate);
+        }
+
+        // ------------------ Tracking ------------------
+        function refreshTrackingSummary(entries) {
+          if (entries.length === 0) {
+            $("#summary-weight").text("-");
+            $("#summary-weight-diff").text("-");
             return;
           }
-          sorted.forEach((e,idx)=>{
-            const note  = e.notes? `<div class='tiny muted mt-1'><i class="bi bi-chat-left-text me-1"></i>${e.notes}</div>`:'';
-            const bf    = e.bodyFat? `${e.bodyFat}%`:'—';
-            const waist = e.waist? `${e.waist} cm`:'—';
+          const sorted = [...entries].sort((a, b) =>
+            a.date.localeCompare(b.date)
+          );
+          const first = sorted[0];
+          const last = sorted[sorted.length - 1];
+          $("#summary-weight").text(`${last.weight} kg`);
+          const diff = (last.weight - first.weight).toFixed(1);
+          const txt = (diff > 0 ? "+" : "") + diff + " kg";
+          $("#summary-weight-diff").text(txt);
+        }
+
+        function renderHistory(entries) {
+          const $list = $("#trk-history").empty();
+          const sorted = [...entries].sort((a, b) =>
+            b.date.localeCompare(a.date)
+          );
+          if (sorted.length === 0) {
+            $list.append(
+              '<li class="list-group-item tiny">No entries yet. Add your first above.</li>'
+            );
+            return;
+          }
+          sorted.forEach((e, idx) => {
+            const note = e.notes
+              ? `<div class='tiny muted mt-1'><i class="bi bi-chat-left-text me-1"></i>${e.notes}</div>`
+              : "";
+            const bf = e.bodyFat ? `${e.bodyFat}%` : "-";
+            const waist = e.waist ? `${e.waist} cm` : "-";
             $list.append(`
               <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div>
-                  <div class="fw-semibold">${fmt(e.date)} • ${e.weight} kg</div>
-                  <div class="tiny">Body fat: ${bf} • Waist: ${waist}</div>
+                  <div class="fw-semibold">${fmt(
+                    e.date
+                  )} ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ ${
+              e.weight
+            } kg</div>
+                  <div class="tiny">Body fat: ${bf} ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ Waist: ${waist}</div>
                   ${note}
                 </div>
-                <button class="btn btn-outline-danger btn-sm" data-del="${e.date}" title="Delete entry">
+                <button class="btn btn-outline-danger btn-sm" data-del="${
+                  e.date
+                }" title="Delete entry">
                   <i class="bi bi-trash"></i>
                 </button>
               </li>`);
           });
 
           // delete handler
-          $list.find('button[data-del]').on('click', function(){
-            const date = $(this).data('del');
-            let entries = load(K_TRACK, []);
-            entries = entries.filter(x=>x.date!==date);
-            save(K_TRACK, entries);
+          $list.find("button[data-del]").on("click", function () {
+            const date = $(this).data("del");
+            const keys = currentKeys();
+            let entries = load(keys.TRACK, []);
+            entries = entries.filter((x) => x.date !== date);
+            save(keys.TRACK, entries);
             refreshTrackingSummary(entries);
             renderCharts(entries);
             renderHistory(entries);
           });
         }
 
-        let chartWeight=null, chartBfWaist=null;
-        function renderCharts(entries){
-          const ctx1 = document.getElementById('chart-weight');
-          const ctx2 = document.getElementById('chart-bf-waist');
-          const sorted = [...entries].sort((a,b)=>a.date.localeCompare(b.date));
-          const labels = sorted.map(e=>e.date);
-          const weights= sorted.map(e=>e.weight);
-          const bfat   = sorted.map(e=>e.bodyFat||null);
-          const waist  = sorted.map(e=>e.waist||null);
+        function chartColors() {
+          const styles = getComputedStyle(document.body);
+          const read = (prop, fallback) => {
+            const value = styles.getPropertyValue(prop);
+            return (value && value.trim()) || fallback;
+          };
+          return {
+            axis: read("--color-chart-axis", "#bcd1ff"),
+            legend: read("--color-chart-legend", "#cfe0ff"),
+          };
+        }
 
-          if(chartWeight){ chartWeight.destroy(); }
-          if(chartBfWaist){ chartBfWaist.destroy(); }
+        let chartWeight = null,
+          chartBfWaist = null;
+        function renderCharts(entries) {
+          const ctx1 = document.getElementById("chart-weight");
+          const ctx2 = document.getElementById("chart-bf-waist");
+          const sorted = [...entries].sort((a, b) =>
+            a.date.localeCompare(b.date)
+          );
+          const labels = sorted.map((e) => e.date);
+          const weights = sorted.map((e) => e.weight);
+          const bfat = sorted.map((e) => e.bodyFat || null);
+          const waist = sorted.map((e) => e.waist || null);
+          const { axis, legend } = chartColors();
+
+          if (chartWeight) {
+            chartWeight.destroy();
+          }
+          if (chartBfWaist) {
+            chartBfWaist.destroy();
+          }
 
           chartWeight = new Chart(ctx1, {
-            type:'line',
-            data:{ labels, datasets:[{ label:'Weight (kg)', data:weights, tension:.3, fill:false }] },
-            options:{ plugins:{legend:{display:false}}, scales:{ x:{ ticks:{ color:'#bcd1ff' } }, y:{ ticks:{ color:'#bcd1ff' } } } }
+            type: "line",
+            data: {
+              labels,
+              datasets: [
+                {
+                  label: "Weight (kg)",
+                  data: weights,
+                  tension: 0.3,
+                  fill: false,
+                },
+              ],
+            },
+            options: {
+              plugins: { legend: { display: false } },
+              scales: {
+                x: { ticks: { color: axis } },
+                y: { ticks: { color: axis } },
+              },
+            },
           });
 
           chartBfWaist = new Chart(ctx2, {
-            type:'line',
-            data:{ labels, datasets:[
-              { label:'Body Fat %', data:bfat, tension:.3 },
-              { label:'Waist (cm)', data:waist, tension:.3 }
-            ]},
-            options:{ plugins:{legend:{labels:{color:'#cfe0ff'}}}, scales:{ x:{ ticks:{ color:'#bcd1ff' } }, y:{ ticks:{ color:'#bcd1ff' } } } }
+            type: "line",
+            data: {
+              labels,
+              datasets: [
+                { label: "Body Fat %", data: bfat, tension: 0.3 },
+                { label: "Waist (cm)", data: waist, tension: 0.3 },
+              ],
+            },
+            options: {
+              plugins: { legend: { labels: { color: legend } } },
+              scales: {
+                x: { ticks: { color: axis } },
+                y: { ticks: { color: axis } },
+              },
+            },
           });
         }
 
+        function refreshChartTheme() {
+          if (!chartWeight && !chartBfWaist) {
+            return;
+          }
+          const { axis, legend } = chartColors();
+          if (chartWeight) {
+            if (chartWeight.options && chartWeight.options.scales) {
+              chartWeight.options.scales.x.ticks.color = axis;
+              chartWeight.options.scales.y.ticks.color = axis;
+            }
+            chartWeight.update();
+          }
+          if (chartBfWaist) {
+            if (chartBfWaist.options) {
+              if (chartBfWaist.options.scales) {
+                chartBfWaist.options.scales.x.ticks.color = axis;
+                chartBfWaist.options.scales.y.ticks.color = axis;
+              }
+              if (
+                chartBfWaist.options.plugins &&
+                chartBfWaist.options.plugins.legend &&
+                chartBfWaist.options.plugins.legend.labels
+              ) {
+                chartBfWaist.options.plugins.legend.labels.color = legend;
+              }
+            }
+            chartBfWaist.update();
+          }
+        }
+
         // ------------------ Workouts Rendering ------------------
-        function renderWorkouts(plan, doneMap){
-          const $weeks = $('#weeks-container').empty();
-          let total=0, done=0;
-          plan.forEach((w,wi)=>{
-            const wid = `wk-${wi+1}`;
-            const weekDays = w.days.filter(d=>d.isWorkout);
-            const weekDone = weekDays.filter(d=>doneMap[d.id]).length;
-            total += weekDays.length; done += weekDone;
-            const pct = Math.round(weekDone / weekDays.length * 100);
+        function renderWorkouts(plan, doneMap) {
+          const $weeks = $("#weeks-container").empty();
+          let total = 0,
+            done = 0;
+          plan.forEach((w, wi) => {
+            const wid = `wk-${wi + 1}`;
+            const weekDays = w.days.filter((d) => d.isWorkout);
+            const weekDone = weekDays.filter((d) => doneMap[d.id]).length;
+            total += weekDays.length;
+            done += weekDone;
+            const pct = Math.round((weekDone / weekDays.length) * 100);
 
             const header = `
               <h2 class="accordion-header" id="${wid}-hdr">
@@ -755,7 +1316,9 @@
                   <div class="w-100 d-flex align-items-center justify-content-between">
                     <div>
                       <span class="me-2">Week ${w.week}</span>
-                      <span class="tiny muted">${fmt(w.days[0].date)} – ${fmt(w.days[6].date)}</span>
+                      <span class="tiny muted">${fmt(
+                        w.days[0].date
+                      )} &ndash; ${fmt(w.days[6].date)}</span>
                     </div>
                     <div class="d-flex align-items-center gap-2">
                       <div class="progress" style="width:100px"><div class="progress-bar" style="width:${pct}%"></div></div>
@@ -765,23 +1328,34 @@
                 </button>
               </h2>`;
 
-            const bodyRows = w.days.map((d)=>{
-              if(!d.isWorkout){
-                return `<li class="list-group-item d-flex align-items-center justify-content-between">
-                    <div><i class="bi bi-cup-hot me-2"></i><strong>Rest</strong> • ${d.label}</div>
-                    <span class="badge rounded-pill bg-secondary">—</span>
+            const bodyRows = w.days
+              .map((d) => {
+                if (!d.isWorkout) {
+                  return `<li class="list-group-item d-flex align-items-center justify-content-between">
+                    <div><i class="bi bi-cup-hot me-2"></i><strong>Rest</strong> &ndash; ${d.label}</div>
+                    <span class="badge rounded-pill bg-secondary">---</span>
                   </li>`;
-              }
-              const exHtml = d.exercises.map(e=>`<li class="tiny">• <strong>${e.n}</strong> — ${e.s} <span class="muted">${e.q? '• '+e.q:''}</span></li>`).join('');
-              const checked = doneMap[d.id] ? 'checked' : '';
-              return `<li class="list-group-item">
+                }
+                const exHtml = d.exercises
+                  .map((e) => {
+                    const note = e.q
+                      ? `<span class="muted"> &bull; ${e.q}</span>`
+                      : "";
+                    return `<li class="tiny">&bull; <strong>${e.n}</strong> &ndash; ${e.s}${note}</li>`;
+                  })
+                  .join("");
+                const checked = doneMap[d.id] ? "checked" : "";
+                const cardioInfo = d.cardio
+                  ? `${d.cardio.eq} - ${d.cardio.tip}`
+                  : "No cardio scheduled";
+                return `<li class="list-group-item">
                 <div class="d-flex justify-content-between align-items-center">
                   <div>
-                    <div class="fw-semibold"><i class="bi bi-calendar-check me-1"></i>${d.label} • <span class="badge badge-soft">${d.type}</span></div>
+                    <div class="fw-semibold"><i class="bi bi-calendar-check me-1"></i>${d.label} &ndash; <span class="badge badge-soft">${d.type}</span></div>
                     <ul class="mb-1 mt-1">
                       ${exHtml}
                     </ul>
-                    <div class="tiny muted"><i class="bi bi-heart-pulse me-1"></i>Cardio: ${d.cardio.eq} — ${d.cardio.tip}</div>
+                    <div class="tiny muted"><i class="bi bi-heart-pulse me-1"></i>Cardio: ${cardioInfo}</div>
                   </div>
                   <div class="form-check form-switch ms-2">
                     <input class="form-check-input" type="checkbox" data-done-id="${d.id}" ${checked}>
@@ -789,7 +1363,8 @@
                   </div>
                 </div>
               </li>`;
-            }).join('');
+              })
+              .join("");
 
             const body = `
               <div id="${wid}-col" class="accordion-collapse collapse" data-bs-parent="#weeks-container">
@@ -798,242 +1373,482 @@
                 </div>
               </div>`;
 
-            $weeks.append(`<div class="accordion-item card mb-2">${header}${body}</div>`);
+            $weeks.append(
+              `<div class="accordion-item card mb-2">${header}${body}</div>`
+            );
           });
 
-          const pctOverall = Math.round(done/total*100) || 0;
-          $('#workout-overall-bar').css('width', pctOverall+'%');
-          $('#workout-overall-text').text(`${done}/${total}`);
-          $('#summary-complete-bar').css('width', pctOverall+'%');
-          $('#summary-complete-text').text(`${pctOverall}%`);
+          const pctOverall = Math.round((done / total) * 100) || 0;
+          $("#workout-overall-bar").css("width", pctOverall + "%");
+          $("#workout-overall-text").text(`${done}/${total}`);
+          $("#summary-complete-bar").css("width", pctOverall + "%");
+          $("#summary-complete-text").text(`${pctOverall}%`);
 
           // Bind toggles
-          $weeks.find('input[data-done-id]').on('change', function(){
-            const id = $(this).data('done-id');
-            const map = load(K_DONE, {});
-            map[id] = $(this).is(':checked');
-            save(K_DONE, map);
-            renderWorkouts(load(K_PLAN,[]), map); // refresh summary & progress
+          $weeks.find("input[data-done-id]").on("change", function () {
+            const id = $(this).data("done-id");
+            const keys = currentKeys();
+            const map = load(keys.DONE, {});
+            map[id] = $(this).is(":checked");
+            save(keys.DONE, map);
+            renderWorkouts(load(keys.PLAN, []), map); // refresh summary & progress
           });
         }
 
         // ------------------ Event Wiring & Boot ------------------
-        function show(screen){
-          $('#screen-users').toggleClass('d-none', screen!=='users');
-          $('#screen-akhil').toggleClass('d-none', screen!=='akhil');
-          if(screen==='akhil'){
+        function show(screen) {
+          $("#screen-users").toggleClass("d-none", screen !== "users");
+          $("#screen-akhil").toggleClass("d-none", screen !== "akhil");
+          if (screen === "akhil") {
             // default to Tracking tab active
-            const tab = new bootstrap.Tab(document.querySelector('[data-bs-target="#tab-tracking"]'));
+            const tab = new bootstrap.Tab(
+              document.querySelector('[data-bs-target="#tab-tracking"]')
+            );
             tab.show();
           }
         }
 
-        $(function(){
-          // Apply saved theme on load
-          try{ const th = JSON.parse(localStorage.getItem('wl_akhil_theme')) || 'dark'; applyTheme(th); }catch{ applyTheme('dark'); }
-          // init dates
-          $('#trk-date').val(todayISO());
+        function loadThemePreference() {
+          const keys = currentKeys();
+          let theme = load(keys.THEME, null);
+          if (theme) {
+            return theme;
+          }
+          const legacyAkhil = load(NS(USERS.akhil.id, "theme"), null);
+          const legacyWife = load(NS(USERS.wife.id, "theme"), null);
+          theme = legacyAkhil || legacyWife || "dark";
+          save(keys.THEME, theme);
+          return theme;
+        }
 
-          // navigation
-          $('#btn-enter-akhil').on('click', function(){
-            show('akhil');
-            const plan = ensurePlan();
-            const done = load(K_DONE, {});
-            renderWorkouts(plan, done);
-            $('#plan-start-label').text(fmt(load(K_START,todayISO())));
+        function openDashboardForCurrentUser() {
+          const user = userMeta(CURRENT_USER);
+          const keys = currentKeys();
+          show("akhil");
+          $(".app-user-name").text(user.name);
+          $("#summary-weight").text("-");
+          $("#summary-weight-diff").text("-");
 
-            const entries = load(K_TRACK, []);
-            refreshTrackingSummary(entries);
-            renderCharts(entries);
-            renderHistory(entries);
+          const start = ensureStart(CURRENT_USER);
+          const plan = ensurePlan(CURRENT_USER, start);
+          const done = load(keys.DONE, {});
+          renderWorkouts(plan, done);
+
+          $("#plan-start-label").text(fmt(load(keys.START, todayISO())));
+          const entries = load(keys.TRACK, []);
+          refreshTrackingSummary(entries);
+          renderCharts(entries);
+          renderHistory(entries);
+          localStorage.setItem("wl_last_user", CURRENT_USER);
+        }
+
+        $(function () {
+          const savedLastUser = localStorage.getItem("wl_last_user");
+          if (savedLastUser && USERS[savedLastUser]) {
+            CURRENT_USER = savedLastUser;
+          }
+
+          const themePreference = loadThemePreference();
+          applyTheme(themePreference);
+
+          $("#trk-date").val(todayISO());
+
+          $("#btn-enter-akhil").on("click", function () {
+            CURRENT_USER = USERS.akhil.id;
+            openDashboardForCurrentUser();
           });
-          $('#btn-back-users').on('click', function(){ show('users'); });
-          $('#btn-open-settings, #btn-open-settings-bottom').on('click', function(){
-            const oc = new bootstrap.Offcanvas('#offcanvasSettings'); oc.show();
-            const th = load(K_THEME,'dark');
-            $('#switch-theme').prop('checked', th==='light');
+
+          $("#btn-enter-wife").on("click", function () {
+            CURRENT_USER = USERS.wife.id;
+            openDashboardForCurrentUser();
           });
 
-          // tracking add entry
-          $('#btn-add-entry').on('click', function(){
+          $("#btn-back-users").on("click", function () {
+            show("users");
+          });
+
+          $("#btn-open-settings, #btn-open-settings-bottom").on(
+            "click",
+            function () {
+              const oc = new bootstrap.Offcanvas("#offcanvasSettings");
+              oc.show();
+              const theme = load(currentKeys().THEME, "dark");
+              $("#switch-theme").prop("checked", theme === "light");
+              ensureStart(CURRENT_USER);
+            }
+          );
+
+          $("#btn-add-entry").on("click", function () {
             const e = {
-              date: $('#trk-date').val() || todayISO(),
-              weight: parseFloat($('#trk-weight').val()),
-              bodyFat: parseFloat($('#trk-bf').val()),
-              waist: parseFloat($('#trk-waist').val()),
-              notes: ($('#trk-notes').val()||'').trim()
+              date: $("#trk-date").val() || todayISO(),
+              weight: parseFloat($("#trk-weight").val()),
+              bodyFat: parseFloat($("#trk-bf").val()),
+              waist: parseFloat($("#trk-waist").val()),
+              notes: ($("#trk-notes").val() || "").trim(),
             };
-            if(!e.weight){ alert('Please enter weight.'); return; }
-            let entries = load(K_TRACK, []);
-            entries = entries.filter(x=>x.date!==e.date); // keep last for date
+            if (!e.weight) {
+              alert("Please enter weight.");
+              return;
+            }
+            const keys = currentKeys();
+            let entries = load(keys.TRACK, []);
+            entries = entries.filter((x) => x.date !== e.date);
             entries.push(e);
-            save(K_TRACK, entries);
+            save(keys.TRACK, entries);
             refreshTrackingSummary(entries);
             renderCharts(entries);
             renderHistory(entries);
-            // quick clear
-            $('#trk-weight').val(''); $('#trk-bf').val(''); $('#trk-waist').val(''); $('#trk-notes').val('');
+            $("#trk-weight").val("");
+            $("#trk-bf").val("");
+            $("#trk-waist").val("");
+            $("#trk-notes").val("");
           });
 
-          // export
-          $('#btn-export-json').on('click', function(){
+          $("#btn-export-json").on("click", function () {
+            const keys = currentKeys();
+            const user = userMeta(CURRENT_USER);
             const data = {
-              start: load(K_START,null),
-              tracking: load(K_TRACK,[]),
-              done: load(K_DONE,{}),
-              plan: load(K_PLAN,[])
+              start: load(keys.START, null),
+              tracking: load(keys.TRACK, []),
+              done: load(keys.DONE, {}),
+              plan: load(keys.PLAN, []),
             };
-            const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+            const blob = new Blob([JSON.stringify(data, null, 2)], {
+              type: "application/json",
+            });
             const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url; a.download = 'akhil-weightloss-data.json'; a.click();
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = user.id + "-fitness-data.json";
+            a.click();
             URL.revokeObjectURL(url);
           });
 
-          // import
-          $('#input-import').on('change', function(){
-            const file = this.files[0]; if(!file) return;
+          $("#input-import").on("change", function () {
+            const file = this.files[0];
+            if (!file) return;
             const reader = new FileReader();
-            reader.onload = function(e){
-              try{
+            reader.onload = function (e) {
+              try {
                 const data = JSON.parse(e.target.result);
-                if(data.start)    save(K_START,data.start);
-                if(data.tracking) save(K_TRACK,data.tracking);
-                if(data.done)     save(K_DONE,data.done);
-                if(data.plan)     save(K_PLAN,data.plan);
-                alert('Import complete. Reloading view.');
-                const plan = ensurePlan();
-                renderWorkouts(plan, load(K_DONE,{}));
-                const entries = load(K_TRACK,[]);
-                refreshTrackingSummary(entries); renderCharts(entries); renderHistory(entries);
-                $('#plan-start-label').text(fmt(load(K_START,todayISO())));
-              } catch(err){ alert('Invalid JSON.'); }
+                const keys = currentKeys();
+                if (data.start) save(keys.START, data.start);
+                if (data.tracking) save(keys.TRACK, data.tracking);
+                if (data.done) save(keys.DONE, data.done);
+                if (data.plan) save(keys.PLAN, data.plan);
+                alert("Import complete. Reloading view.");
+                const plan = ensurePlan(CURRENT_USER);
+                renderWorkouts(plan, load(keys.DONE, {}));
+                const entries = load(keys.TRACK, []);
+                refreshTrackingSummary(entries);
+                renderCharts(entries);
+                renderHistory(entries);
+                $("#plan-start-label").text(fmt(load(keys.START, todayISO())));
+              } catch (err) {
+                alert("Invalid JSON.");
+              }
             };
             reader.readAsText(file);
-            this.value = '';
+            this.value = "";
           });
 
-          // clear tracking
-          $('#btn-clear-tracking').on('click', function(){
-            if(confirm('Clear all tracking entries?')){
-              save(K_TRACK, []);
-              renderHistory([]); renderCharts([]); refreshTrackingSummary([]);
+          $("#btn-clear-tracking").on("click", function () {
+            if (confirm("Clear all tracking entries?")) {
+              const keys = currentKeys();
+              save(keys.TRACK, []);
+              renderHistory([]);
+              renderCharts([]);
+              refreshTrackingSummary([]);
             }
           });
 
-          // demo fill
-          $('#btn-fill-demo').on('click', function(){
-            const base = 118.0, days = 12;
+          $("#btn-fill-demo").on("click", function () {
+            const keys = currentKeys();
+            const base = 118.0;
+            const days = 12;
             const entries = [];
-            for(let i=0;i<days;i++){
-              const d = new Date(); d.setDate(d.getDate()- (days-i));
+            for (let i = 0; i < days; i++) {
+              const d = new Date();
+              d.setDate(d.getDate() - (days - i));
               entries.push({
-                date: d.toISOString().slice(0,10),
-                weight: +(base - i*0.4 + (Math.random()*0.3-0.15)).toFixed(1),
-                bodyFat: +(33 - i*0.2 + (Math.random()*0.2-0.1)).toFixed(1),
-                waist: +(118 - i*0.6 + (Math.random()*0.4-0.2)).toFixed(1),
-                notes: i%3===0? 'Felt good' : ''
+                date: d.toISOString().slice(0, 10),
+                weight: +(
+                  base -
+                  i * 0.4 +
+                  (Math.random() * 0.3 - 0.15)
+                ).toFixed(1),
+                bodyFat: +(33 - i * 0.2 + (Math.random() * 0.2 - 0.1)).toFixed(
+                  1
+                ),
+                waist: +(118 - i * 0.6 + (Math.random() * 0.4 - 0.2)).toFixed(
+                  1
+                ),
+                notes: i % 3 === 0 ? "Felt good" : "",
               });
             }
-            save(K_TRACK, entries);
-            refreshTrackingSummary(entries); renderCharts(entries); renderHistory(entries);
+            save(keys.TRACK, entries);
+            refreshTrackingSummary(entries);
+            renderCharts(entries);
+            renderHistory(entries);
           });
 
-              // Theme toggles
-          $('#btn-toggle-theme').on('click', function(){
-            const next = document.body.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
-            applyTheme(next); save(K_THEME,next);
+          // Theme toggles
+          $("#btn-toggle-theme").on("click", function () {
+            const currentTheme =
+              document.body.getAttribute("data-theme") === "light"
+                ? "light"
+                : "dark";
+            const next = currentTheme === "dark" ? "light" : "dark";
+            applyTheme(next);
+            save(currentKeys().THEME, next);
           });
-          $('#switch-theme').on('change', function(){
-            const next = this.checked ? 'light' : 'dark';
-            applyTheme(next); save(K_THEME,next);
-          });
-
-          // settings
-          $('#btn-rebuild-plan').on('click', function(){
-            const s = $('#setting-start-date').val() || todayISO();
-            save(K_START, s);
-            const plan = buildPlan(s); save(K_PLAN, plan);
-            renderWorkouts(plan, load(K_DONE,{}));
-            $('#plan-start-label').text(fmt(s));
-            alert('Plan rebuilt from selected start date.');
+          $("#switch-theme").on("change", function () {
+            const next = this.checked ? "light" : "dark";
+            applyTheme(next);
+            save(currentKeys().THEME, next);
           });
 
-          $('#btn-clear-all').on('click', function(){
-            if(!confirm('This will clear plan, completion, and tracking for Akhil. Continue?')) return;
-            [K_TRACK,K_PLAN,K_DONE,K_START].forEach(k=>localStorage.removeItem(k));
-            // Re-init
-            const s = todayISO(); save(K_START,s);
-            const plan = buildPlan(s); save(K_PLAN,plan); save(K_DONE,{}); save(K_TRACK,[]);
-            renderWorkouts(plan, {}); renderCharts([]); renderHistory([]); refreshTrackingSummary([]);
-            $('#plan-start-label').text(fmt(s));
-            alert('All cleared. Fresh start created.');
+          $("#btn-rebuild-plan").on("click", function () {
+            const keys = currentKeys();
+            const s = $("#setting-start-date").val() || todayISO();
+            save(keys.START, s);
+            const plan = buildPlanForUser(CURRENT_USER, s);
+            save(keys.PLAN, plan);
+            renderWorkouts(plan, load(keys.DONE, {}));
+            $("#plan-start-label").text(fmt(s));
+            alert("Plan rebuilt from selected start date.");
           });
 
-          $('#btn-reset-workouts').on('click', function(){
-            if(confirm('Unmark all workouts as done?')){ save(K_DONE,{}); renderWorkouts(load(K_PLAN,[]), {}); }
+          $("#btn-clear-all").on("click", function () {
+            if (
+              !confirm(
+                "This will clear plan, completion, and tracking data. Continue?"
+              )
+            ) {
+              return;
+            }
+            const keys = currentKeys();
+            [keys.TRACK, keys.PLAN, keys.DONE, keys.START].forEach((k) =>
+              localStorage.removeItem(k)
+            );
+            const s = todayISO();
+            save(keys.START, s);
+            const plan = buildPlanForUser(CURRENT_USER, s);
+            save(keys.PLAN, plan);
+            save(keys.DONE, {});
+            save(keys.TRACK, []);
+            renderWorkouts(plan, {});
+            renderCharts([]);
+            renderHistory([]);
+            refreshTrackingSummary([]);
+            $("#plan-start-label").text(fmt(s));
+            alert("All cleared. Fresh start created.");
           });
 
-          // Dev: simple self-tests
-          $('#btn-run-tests').on('click', function(){
-            console.group('%cSelf-Tests','color:#00e5a8');
-            try{
-              // Test 1: buildPlan size & weekdays
-              const p = buildPlan(todayISO());
-              console.assert(p.length===8, 'Plan should have 8 weeks');
+          $("#btn-reset-workouts").on("click", function () {
+            if (confirm("Unmark all workouts as done?")) {
+              const keys = currentKeys();
+              save(keys.DONE, {});
+              renderWorkouts(load(keys.PLAN, []), {});
+            }
+          });
+
+          $("#btn-run-tests").on("click", function () {
+            console.group("%cSelf-Tests", "color:#00e5a8");
+            try {
+              const p = buildPlanAkhil(todayISO());
+              console.assert(p.length === 8, "Plan should have 8 weeks");
               const w0 = p[0];
-              console.assert(w0.days.length===7, 'Each week should have 7 days');
-              console.assert(w0.days.filter(d=>d.isWorkout).length===5, 'Each week should have 5 workout days');
+              console.assert(
+                w0.days.length === 7,
+                "Each week should have 7 days"
+              );
+              console.assert(
+                w0.days.filter((d) => d.isWorkout).length === 5,
+                "Each week should have 5 workout days"
+              );
 
-              // Test 2: cardio mapping index 0..4
-              for(let i=0;i<5;i++){
-                const c = (function(){ return (function(){ return i; })(); })();
-                const cd = (function(idx){ return (idx>=0 && idx<5) ? true : false; })(i);
-                console.assert(cd, 'Day index within 0..4');
-                console.assert(!!cardioForDay(i,0), 'cardioForDay returns value');
+              for (let i = 0; i < 5; i++) {
+                console.assert(i >= 0 && i < 5, "Day index within 0..4");
+                console.assert(
+                  !!akhilCardioForDay(i, 0),
+                  "akhilCardioForDay returns value"
+                );
               }
 
-              // Test 3: localStorage roundtrip
-              const key = 'test_key_temp_' + Math.random().toString(36).slice(2);
-              localStorage.setItem(key, JSON.stringify({a:1}));
+              const pw = buildPlanWife(todayISO());
+              console.assert(pw.length === 8, "Wife: 8 weeks");
+              console.assert(pw[0].days.length === 7, "Wife: 7 days/week");
+              console.assert(
+                pw[0].days.filter((d) => d.isWorkout).length === 5,
+                "Wife: 5 workouts/week"
+              );
+              for (let wk = 0; wk < 2; wk++) {
+                for (let i = 0; i < 5; i++) {
+                  const d = pw[wk].days[i];
+                  console.assert(
+                    d.type === "Ground",
+                    "Wife: W" + (wk + 1) + "D" + (i + 1) + " is Ground"
+                  );
+                  console.assert(
+                    d.exercises && d.exercises.length >= 6,
+                    "Wife: Ground day has enough exercises"
+                  );
+                }
+              }
+              const w3LowerA = pw[2].days[1];
+              console.assert(
+                w3LowerA.type === "LowerA",
+                "Wife: Week 3 Tue is LowerA"
+              );
+              console.assert(
+                !w3LowerA.exercises.some((e) => /Leg Press/i.test(e.n)),
+                "Wife: Week 3 LowerA has no Leg Press"
+              );
+              const w4LowerA = pw[3].days[1];
+              console.assert(
+                w4LowerA.exercises.some((e) => /Leg Press/i.test(e.n)),
+                "Wife: Week 4 LowerA includes Leg Press"
+              );
+
+              const pa = buildPlanForUser("akhil", todayISO());
+              const pw2 = buildPlanForUser("wife", todayISO());
+              console.assert(
+                pa && pw2,
+                "Dispatcher returns plans for both users"
+              );
+
+              const key =
+                "test_key_temp_" + Math.random().toString(36).slice(2);
+              localStorage.setItem(key, JSON.stringify({ a: 1 }));
               const rt = JSON.parse(localStorage.getItem(key));
-              console.assert(rt.a===1, 'localStorage roundtrip works');
+              console.assert(rt.a === 1, "localStorage roundtrip works");
               localStorage.removeItem(key);
 
-              console.log('%cAll tests passed','color:#1ae5b2');
-            } catch(err){
-              console.error('Tests failed:', err);
+              console.log("%cAll tests passed", "color:#1ae5b2");
+            } catch (err) {
+              console.error("Tests failed:", err);
             } finally {
               console.groupEnd();
             }
           });
 
-          // If user revisits with existing data, allow quick enter to Akhil
-          if(load(K_PLAN,null) || load(K_TRACK,[]).length>0){ $('#btn-enter-akhil').trigger('click'); }
+          const preferredUsers = [];
+          if (savedLastUser && USERS[savedLastUser]) {
+            preferredUsers.push(savedLastUser);
+          }
+          preferredUsers.push(USERS.akhil.id, USERS.wife.id);
+          const autoUser = preferredUsers.find((id) => userHasData(id));
+          if (autoUser) {
+            CURRENT_USER = autoUser;
+            openDashboardForCurrentUser();
+          }
         });
 
         // ------------------ Ensure start/plan helpers (declared after handlers so hoisted properly) ------------------
-        function ensureStart(){
-          let s = load(K_START, null);
-          if(!s){ s = todayISO(); save(K_START,s); }
-          $('#setting-start-date').val(s);
-          $('#plan-start-label').text(fmt(s));
+        function ensureStart(userId) {
+          const keys = K(userId);
+          let s = load(keys.START, null);
+          if (!s) {
+            s = todayISO();
+            save(keys.START, s);
+          }
+          $("#setting-start-date").val(s);
+          $("#plan-start-label").text(fmt(s));
           return s;
         }
 
-        function ensurePlan(){
-          const s = ensureStart();
-          let plan = load(K_PLAN, null);
-          if(!plan){ plan = buildPlan(s); save(K_PLAN, plan); }
+        function migratePlanIdsIfNeeded(userId, plan) {
+          if (!Array.isArray(plan)) {
+            return plan;
+          }
+          const suffix = `_${userId}`;
+          let needsMigration = false;
+          plan.forEach((week) => {
+            if (!week || !Array.isArray(week.days)) {
+              return;
+            }
+            week.days.forEach((day) => {
+              if (
+                day &&
+                typeof day.id === "string" &&
+                !day.id.endsWith(suffix)
+              ) {
+                needsMigration = true;
+              }
+            });
+          });
+          if (!needsMigration) {
+            return plan;
+          }
+          const migrated = plan.map((week, wIdx) => {
+            const days = Array.isArray(week.days)
+              ? week.days.map((day, dIdx) => {
+                  const hasId = day && typeof day.id === "string";
+                  const newId =
+                    hasId && day.id.endsWith(suffix)
+                      ? day.id
+                      : `W${wIdx + 1}D${dIdx + 1}${suffix}`;
+                  return { ...day, id: newId };
+                })
+              : [];
+            return { ...week, days };
+          });
+
+          const keys = K(userId);
+          const done = load(keys.DONE, {});
+          const migratedDone = {};
+          Object.entries(done || {}).forEach(([key, value]) => {
+            if (typeof value === "boolean") {
+              const newKey = key.endsWith(suffix) ? key : key + suffix;
+              migratedDone[newKey] = value;
+            }
+          });
+          save(keys.DONE, migratedDone);
+          save(keys.PLAN, migrated);
+          return migrated;
+        }
+
+        function ensurePlan(userId, startDate) {
+          const keys = K(userId);
+          const s = startDate || ensureStart(userId);
+          let plan = load(keys.PLAN, null);
+          if (!plan) {
+            plan = buildPlanForUser(userId, s);
+            save(keys.PLAN, plan);
+          } else {
+            plan = migratePlanIdsIfNeeded(userId, plan);
+          }
           return plan;
         }
 
-        function applyTheme(theme){
-          document.body.setAttribute('data-theme', theme==='light' ? 'light' : 'dark');
-          const icon = document.querySelector('#btn-toggle-theme i');
-          if(icon){ icon.className = theme==='light' ? 'bi bi-moon' : 'bi bi-brightness-high'; }
-        }
+        function applyTheme(theme) {
+          const isLight = theme === "light";
+          const next = isLight ? "light" : "dark";
+          document.body.setAttribute("data-theme", next);
+          document.documentElement.style.colorScheme = next;
 
+          const icon = document.querySelector("#btn-toggle-theme i");
+          if (icon) {
+            icon.className = isLight ? "bi bi-moon" : "bi bi-brightness-high";
+          }
+
+          const toggleBtn = document.getElementById("btn-toggle-theme");
+          if (toggleBtn) {
+            toggleBtn.setAttribute(
+              "aria-label",
+              isLight ? "Switch to dark mode" : "Switch to light mode"
+            );
+            toggleBtn.setAttribute("aria-pressed", String(isLight));
+          }
+
+          const switchEl = document.getElementById("switch-theme");
+          if (switchEl) {
+            switchEl.checked = isLight;
+          }
+
+          refreshChartTheme();
+        }
       })();
     </script>
   </body>
